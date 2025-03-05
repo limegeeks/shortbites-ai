@@ -7,6 +7,8 @@ import Link from "next/link";
 import QueryProvider from "@/providers/QueryClientProvider";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
+import { Suspense } from "react";
+import SkeletonCard from "@/components/SkeletonCard";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -49,7 +51,9 @@ console.log("categories are", categories);
 
 
             <Header categories={categories} />
+            <Suspense fallback={<SkeletonCard />}>
             <AppSidebar categories={categories} />
+            </Suspense>
             {children}
           </SidebarProvider>
         </QueryProvider>
