@@ -9,7 +9,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Suspense } from "react";
 import SkeletonCard from "@/components/SkeletonCard";
-
+import categories from '@/data/categories.json'
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -33,9 +33,7 @@ export default async function RootLayout({
 }>) {
 
 
-  const categories = await getCategories();
-
-console.log("categories are", categories);
+  // const categories = await getCategories();
 
 
 
