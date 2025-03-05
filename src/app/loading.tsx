@@ -5,7 +5,9 @@ import LoadingSkeltetonCard from '@/components/LoadingSkeltetonCard'
 
 function loading() {
   return (
-   <div className='h-screen w-screen flex justify-center'> <p > Page is loading </p> </div>
+   <div className='min-h-screen w-screen flex justify-center mt-32'>  {[...new Array(3)].map(function(item,index) {
+    return (<SkeletonCard />)
+   })}</div>
   //  <LoadingSkeltetonCard />
   )
 }
