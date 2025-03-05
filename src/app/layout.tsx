@@ -38,9 +38,6 @@ export  default async function RootLayout({
 
       <body
         className={`
-          
-     
-        
         antialiased dark:bg-slate-800 dark:text-white`}
       >
         <QueryProvider> 

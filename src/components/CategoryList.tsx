@@ -6,6 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { cache, Suspense } from "react";
 import Link from "next/link";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "./ui/sidebar";
+import SkeletonCard from "./SkeletonCard";
 
 
 
@@ -16,13 +17,13 @@ export default async function CategoriesList(props: any) {
     // ✅ Fetch categories (prevents Suspense from triggering incorrectly)
   
     // ✅ Handle empty data
-    if (!categories.length) {
-      return <p className="p-4 text-gray-500">No categories available.</p>;
-    }
+    // if (!categories.length) {
+    //   return <p className="p-4 text-gray-500">No categories available.</p>;
+    // }
   
 
     return (
-      <Suspense fallback={<p>Loading categories...</p>}>
+      <Suspense fallback={<SkeletonCard />}>
  
      
         <SidebarMenu>
