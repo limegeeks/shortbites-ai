@@ -3,7 +3,7 @@
 
 export default function SkeletonCard() {
     return (
-      <div className="max-w-3xl min-h-[calc(100vh-250px)] snap-center block relative mx-auto my-8 bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="max-w-3xl min-w-3xl min-h-[calc(100vh-250px)] snap-center block relative mx-auto my-8 bg-white rounded-lg shadow-lg overflow-hidden">
         {/* Skeleton Image */}
         <div className="w-full h-full absolute top-0 bottom-0 bg-gray-300 animate-pulse"></div>
         

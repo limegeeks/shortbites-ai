@@ -5,8 +5,8 @@ import LoadingSkeltetonCard from '@/components/LoadingSkeltetonCard'
 
 function loading() {
   return (
-   <div className='min-h-screen w-screen flex justify-center mt-32'>  {[...new Array(3)].map(function(item,index) {
-    return (<SkeletonCard />)
+   <div className='min-h-screen w-screen  justify-center mt-32'>  {[...new Array(3)].map(function(item,index) {
+    return (<SkeletonCard key={index} />)
    })}</div>
   //  <LoadingSkeltetonCard />
   )
