@@ -7,7 +7,7 @@ function loading() {
   return (
   
       <div className='min-h-screen w-screen  justify-center mt-32'>  {[...new Array(3)].map(function(item,index) {
-        return (<SkeletonCard  />)
+        return (<SkeletonCard  key={index} />)
        })}
        </div>
 
