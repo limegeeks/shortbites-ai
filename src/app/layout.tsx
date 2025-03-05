@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 // ${geistSans.variable} ${geistMono.variable}
-export  default async function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -33,6 +33,10 @@ export  default async function RootLayout({
 
   const categories = await getCategories();
 
+console.log("categories are", categories);
+
+
+
   return (
     <html lang="en">
 
@@ -40,14 +44,14 @@ export  default async function RootLayout({
         className={`
         antialiased dark:bg-slate-800 dark:text-white`}
       >
-        <QueryProvider> 
-        <SidebarProvider>
+        <QueryProvider>
+          <SidebarProvider>
 
-       
-      <Header categories={categories}  />
-      <AppSidebar categories={categories}  />
-        {children}
-</SidebarProvider>
+
+            <Header categories={categories} />
+            <AppSidebar categories={categories} />
+            {children}
+          </SidebarProvider>
         </QueryProvider>
       </body>
     </html>
