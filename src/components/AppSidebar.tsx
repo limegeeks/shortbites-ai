@@ -10,15 +10,21 @@ import {
   } from "@/components/ui/sidebar"
 import CategoriesList from "./CategoryList"
 import Link from "next/link";
+import { isMobile } from "@/lib/utils";
+import { headers } from "next/headers";
    
-  export function AppSidebar(props: any) {
+  export async function AppSidebar(props: any) {
 
 
     const {categories} = props;
+
+    const userAgent = (await headers()).get("user-agent") || ""; 
+    const mobileCheck = isMobile(userAgent);
+    
     return (
-      <Sidebar defaultValue={"open"} side="left">
+      <Sidebar defaultValue={"open"} className="bg-slate-50" side={mobileCheck == true ? 'right' : 'left'}>
  
-        <SidebarContent>
+        <SidebarContent className="bg-slate-50">
 
             <SidebarGroup className="mt-32"> 
             <SidebarMenu>
@@ -27,8 +33,8 @@ import Link from "next/link";
                 </SidebarMenuButton>
             </SidebarMenu>
             </SidebarGroup>
-          <SidebarGroup className="text-center" >
-            <SidebarGroupLabel className="text-xl font-bold py-4 my-4  uppercase text-slate-900 "> Topics </SidebarGroupLabel>
+          <SidebarGroup className="text-center mx-0" >
+            <SidebarGroupLabel className="text-2xl font-bold py-6 my-4  uppercase text-slate-900 bg-gradient-to-r from-amber-600 via-amber-400 to-amber-500   px-4   "> Topics </SidebarGroupLabel>
             <CategoriesList categories={categories} />
             </SidebarGroup>
           <SidebarGroup />

@@ -8,6 +8,7 @@ import  Card  from "../Card";
 import { Skeleton } from "../ui/skeleton";
 import React from "react";
 import Ad from "../Ad";
+import CardNew from "../CardNew";
 interface Post {
     id: number;
     title: { rendered: string };  // ✅ Titles are inside a "rendered" object
@@ -86,7 +87,7 @@ export default function PostsList({ initialPosts, type, categorySlug, postId } :
        <React.Fragment key={index}> 
          <article id={"article-"+index} key={index} className=" snap-always snap-mandatory snap-center w-full  bg-white">
    
-   <Card 
+   <CardNew 
   
     title={post?.title?.rendered}
     slug={post?.slug}
@@ -102,7 +103,7 @@ export default function PostsList({ initialPosts, type, categorySlug, postId } :
 
        </article>
 
-       {((index + 1) % 3 === 0) && <Ad index={index} />} {/* Insert Ad every 3rd post */}
+       {((index + 1) % 3 === 0) && <Ad index={index + "ad"} />} {/* Insert Ad every 3rd post */}
        </React.Fragment>
       )}
     )}

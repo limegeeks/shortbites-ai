@@ -123,7 +123,7 @@ console.log("image url is", imageUrl);
          
             <SafeHTML html={title} />
             </CardTitle>
-          <CardContent className="overflow-y-scroll text-white  marker:text-amber-500   prose prose-sm md:prose-lg lg:prose-xl prose-invert max-w-none pr-2">
+          <CardContent className="max-h-full overflow-y-auto text-white  marker:text-amber-500   prose prose-sm md:prose-lg lg:prose-xl prose-invert max-w-none pr-2">
            
             <SafeHTML html={content} />
         

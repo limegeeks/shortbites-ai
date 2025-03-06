@@ -10,6 +10,11 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { Suspense } from "react";
 import SkeletonCard from "@/components/SkeletonCard";
 import categories from '@/data/categories.json'
+import { DialogHeader } from "@/components/ui/dialog";
+import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from "@radix-ui/react-dialog";
+import { headers } from "next/headers";
+import { isMobile } from "@/lib/utils";
+import ClientComponent from "@/components/ClientComponent";
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -37,6 +42,7 @@ export default async function RootLayout({
 
 
 
+  
   return (
     <html lang="en">
 
@@ -44,14 +50,16 @@ export default async function RootLayout({
         className={`
         antialiased dark:bg-slate-800 dark:text-white`}
       >
+
         <QueryProvider>
           <SidebarProvider>
-
+   <ClientComponent />
 
             <Header categories={categories} />
-            <Suspense fallback={<SkeletonCard />}>
+            
+                     
             <AppSidebar categories={categories} />
-            </Suspense>
+           
             {children}
           </SidebarProvider>
         </QueryProvider>

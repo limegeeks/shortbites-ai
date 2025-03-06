@@ -33,9 +33,9 @@ export default async function CategoriesList(props: any) {
             
             return (
 
-<SidebarMenuItem className="hover:mx-0 px-0"  key={category.name}>
-<SidebarMenuButton  asChild>
-  <Link className="font-bold text-xl hover:text-amber-500 focus:text-amber-500 text-slate-700" href={`/topic/${category.slug}`}>
+<SidebarMenuItem className="hover:mx-0 px-0 hover:bg-amber-500"  key={category.name}>
+<SidebarMenuButton className="hover:bg-amber-500 transition hover:animate-pulse"  asChild>
+  <Link className="font-bold text-xl hover:bg-amber-500 hover:text-amber-500 focus:text-amber-500 text-slate-700" href={`/topic/${category.slug}`}>
    
     <span>{category.name}</span>
   </Link>
