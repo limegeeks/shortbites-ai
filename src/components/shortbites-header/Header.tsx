@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from "../ui/input";
 import { Card, CardDescription, CardTitle } from "../ui/card";
 import ToggleMenuComponent from "./ToggleMenuComponent";
+import AutoSuggestSearch from "./search/AutoSuggestSearch";
  
 export default   function Header(props: any) {
 
@@ -42,6 +43,7 @@ console.log("categories are", categories);
  
 </div>
 <Dialog>      
+<AutoSuggestSearch />
         {/* Navigation Links (Desktop) */}
         <nav className="  flex flex-row md:flex sm:gap-4   sm:mt-4 sm:ml-16 ">
        
@@ -68,34 +70,7 @@ console.log("categories are", categories);
           <ToggleMenuComponent />
        
         </nav>
-        <DialogContent className=" absolute  border-0 left-1/2 transform  mx-auto  md:max-w-1/2 z-50 p-4  shadow-lg rounded-lg">
-    <DialogHeader>
-      <DialogTitle>Search What you are looking for </DialogTitle>
-      <DialogDescription>
-       
-
-      <Input  placeholder="Search" className="placholder:text-4xl  focus:text-black  p-4 w-full  rounded-md border h-12 focus:outline-none text-4xl my-4   bg-white/30 focus:bg-white"  />
-    
-    <div className="overflow-auto h-[calc(100vh-300px)]"> 
-    {[...new Array(10)].map(function(item, index) {
-
-      return ( <Link key={index} href={"#"} >
-<div  className="p-4 rounded-none m-2  bg-white dark:bg-slate-900  dark:text-slate-50  opacity-95 hover:opacity-100 cursor-pointer">
-<CardTitle className="text-2xl font-bold  first-letter:text-amber-600" > 
-          Card Title 
-</CardTitle>
-      <CardDescription>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi voluptas, distinctio praesentium a numquam odit unde. Pariatur distinctio aspernatur suscipit, repellendus voluptatem unde blanditiis, facere, saepe consequuntur minus assumenda architecto.
-      </CardDescription>
-      </div>
-      </Link>)
-    })}
-         </div>
-    
-      </DialogDescription>
-    </DialogHeader>
-  </DialogContent>
-
+         
         </Dialog>
 
       </div>
