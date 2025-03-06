@@ -74,7 +74,7 @@ console.log("categories are", categories);
       <DialogDescription>
        
 
-      <Input type="text" placeholder="Search" className="placholder:text-4xl  focus:text-black  p-4 w-full  rounded-md border h-12 focus:outline-none text-4xl my-4   bg-white/30 focus:bg-white"  />
+      <Input  placeholder="Search" className="placholder:text-4xl  focus:text-black  p-4 w-full  rounded-md border h-12 focus:outline-none text-4xl my-4   bg-white/30 focus:bg-white"  />
     
     <div className="overflow-auto h-[calc(100vh-300px)]"> 
     {[...new Array(10)].map(function(item, index) {
