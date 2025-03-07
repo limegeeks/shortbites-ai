@@ -6,13 +6,16 @@ import { DialogHeader, DialogContent, DialogTitle } from '@/components/ui/dialog
 import { Input } from '@/components/ui/input'
 import Link from 'next/link'
 import { useQuery } from '@tanstack/react-query'
+import { useRouter } from "next/navigation";
+import { DialogTrigger } from '@radix-ui/react-dialog'
 
 export default function AutoSuggestSearch() {
   const [searchText, setSearchText] = useState('')
   const [debouncedSearch, setDebouncedSearch] = useState('')
-  
   const placeholderTexts = ["Search News Items...", "Trump",  "Find trending news...", "Explore the latest..."]
+  const [open, setOpen] = useState(false)
   const [placeholder, setPlaceholder] = useState(placeholderTexts[0])
+  const router = useRouter();
 
   // Debounce search input to optimize API calls
   useEffect(() => {
@@ -40,9 +43,14 @@ export default function AutoSuggestSearch() {
     },
     enabled: !!debouncedSearch,
   })
+  // ✅ Close dialog when navigating
+  const handleNavigation = (slug: string) => {
+    setOpen(false);
+    router.push(`/${slug}`);
+  };
 
   return (
-    <DialogContent className=" border-0  transform w-[100vw]    text-white  z-50 p-6  rounded-xl  dark:bg-gray-900">
+    <DialogContent   className=" border-0  transform w-[100vw]    text-white  z-50 p-6  rounded-xl  dark:bg-gray-900">
       <DialogHeader>
         <DialogTitle className='text-3xl my-4 font-bold first-letter:text-amber-500 text-white text-center'>
           Search What You Are Looking For
@@ -68,8 +76,9 @@ export default function AutoSuggestSearch() {
         ) : data?.length === 0 && searchText !== '' ? (
           <p className="p-4 text-gray-500 text-center">No results found</p>
         ) : (
-          data?.map((post: any) => (
-            <Link key={post.id} href={`/post/${post.slug}`} className="block">
+          data?.map((post: any, index: number) => (
+            <DialogTrigger key={index}> 
+            <Link key={post.id} href={`/${post.slug}`} className="block">
               <div className="p-4 rounded-lg m-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                 <CardTitle className="text-xl text-slate-900 font-bold first-letter:text-amber-600">
                   {post.title.rendered}
@@ -77,6 +86,7 @@ export default function AutoSuggestSearch() {
                 <CardDescription dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
               </div>
             </Link>
+            </DialogTrigger>
           ))
         )}
       </div>

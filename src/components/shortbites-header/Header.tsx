@@ -18,7 +18,6 @@ export default   function Header(props: any) {
 
 const {categories} = props;
   // const [isOpen, setIsOpen] = useState(false);
-console.log("categories are", categories);
 
 
   return (
@@ -42,7 +41,7 @@ console.log("categories are", categories);
 
  
 </div>
-<Dialog>      
+<Dialog >      
 <AutoSuggestSearch />
         {/* Navigation Links (Desktop) */}
         <nav className="  flex flex-row md:flex sm:gap-4   sm:mt-4 sm:ml-16 ">

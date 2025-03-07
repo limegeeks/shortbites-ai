@@ -27,9 +27,9 @@ interface Post {
     initialPosts: Post[];  // ✅ Array of WordPress post objects
     type: "latest" | "category" | "related";  // ✅ Type of posts
     categorySlug?: string;  // ✅ Optional category slug (for category pages)
-    postId?: string | undefined;  // ✅ Optional postId (for related posts)
+    postSlug?: string | undefined;  // ✅ Optional postId (for related posts)
   }
-export default function PostsList({ initialPosts, type, categorySlug, postId } : PostsListProps) {
+export default function PostsList({ initialPosts, type, categorySlug, postSlug } : PostsListProps) {
   const observerRef = useRef(null);
 //     const queryClient = useQueryClient();
 
@@ -42,7 +42,7 @@ export default function PostsList({ initialPosts, type, categorySlug, postId } :
     hasNextPage,
     isFetchingNextPage,
 
-  } = useInfinitePosts({ type, categorySlug, postId });
+  } = useInfinitePosts({ type, categorySlug, postSlug });
 
   const lastPostRef = useRef<HTMLDivElement | null>(null);
 
@@ -103,7 +103,7 @@ export default function PostsList({ initialPosts, type, categorySlug, postId } :
 
        </article>
 
-       {((index + 1) % 3 === 0) && <Ad index={index + "ad"} />} {/* Insert Ad every 3rd post */}
+       {((index + 1) % 3 === 0) && <Ad index={index} title={""} slug={""} date={""} categories={[]} excerpt={""} content={""} />} {/* Insert Ad every 3rd post */}
        </React.Fragment>
       )}
     )}

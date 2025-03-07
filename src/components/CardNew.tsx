@@ -51,7 +51,6 @@ const NewsCard = ({ title, slug, date, categories, excerpt, content, imageUrl, i
   const toggleExpand = useCallback(() => {
     setExpanded((prev) => !prev);
   }, []);
-  console.log("image url is", imageUrl);
   if (!hasMounted) return  <SkeletonCard />;
 
   return (
