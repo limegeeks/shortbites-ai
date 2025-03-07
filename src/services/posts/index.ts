@@ -8,7 +8,10 @@ export async function getInitialPosts( page = 1, limit = 3, category = "" ) {
         ...(category && { category }), // Add category only if provided
       }).toString();
   
-      const res = await fetch(`${url}?${queryParams}`, {
+        const finalUrl = `${url}?${queryParams}`;
+          console.log("final url in geting initial posts is", finalUrl);
+          
+      const res = await fetch(finalUrl, {
         // cache: "no-store",
         next: { revalidate: 3600 }, // Cache for 1 hour
       });
@@ -26,20 +29,20 @@ export async function getInitialPosts( page = 1, limit = 3, category = "" ) {
   }
   
 
-  export async function fetchPosts({ pageParam = 1, type, categorySlug, postId }: { 
+  export async function fetchPosts({ pageParam = 1, type, categorySlug, postSlug }: { 
     pageParam: number; 
     type: "latest" | "category" | "related"; 
     categorySlug?: string; 
-    postId?: string; 
+    postSlug?: string; 
   }) {
     let url = `/api/posts/?page=${pageParam}&per_page=3`;
   
     if (type === "category" && categorySlug) {
       url += `&category=${categorySlug}`;
-    } else if (type === "related" && postId) {
-      url += `&related_to=${postId}`;
+    } else if (type === "related" && postSlug) {
+      url = `/api/posts/{postSlug}`;
     }
-  console.log("url is",url);
+  console.log("url in get posts is",url);
   
     const res = await fetch(url);
     if (!res.ok) throw new Error("Failed to load posts");
