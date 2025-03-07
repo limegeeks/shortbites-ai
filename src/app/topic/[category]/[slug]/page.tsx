@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import React from 'react'
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params
+  const { slug } =  params
 
   // Fetch post data from Next.js API instead of WordPress
   const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {

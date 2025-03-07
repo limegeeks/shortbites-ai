@@ -17,7 +17,7 @@ interface PapeProp { // <--- your custom page props
 export default async function Page(props: any) {
 
 
-    const slug = props?.params?.slug;
+    const slug =await  props?.params?.category;
 let initialPosts =  await  getInitialPosts(1,3,slug);
 
 
