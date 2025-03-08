@@ -3,9 +3,11 @@ import SkeletonCard from '@/components/SkeletonCard'
 import { notFound } from 'next/navigation'
 import React from 'react'
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } =  params
-
+export default async function Page({ params }: { params: Promise< { slug: string, category: string }> }) {
+  const { slug, category } =  await params
+  console.log("slug is", slug);
+  console.log("category is", category);
+  
   // Fetch post data from Next.js API instead of WordPress
   const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
     cache: 'no-store', // Disable caching for fresh data
