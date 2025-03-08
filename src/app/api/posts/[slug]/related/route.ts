@@ -2,14 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const WP_API_URL = 'https://shortbites.ai/wp-json/wp/v2';
 
-export async function GET(req: NextRequest, { params }: { params: { slug: string } }) {
+export async function GET( request: NextRequest,
+    { params }: { params: Promise<{ slug: string }> }) {
     try {
-        const { slug } = params;
+        const { slug } = await params;
         if (!slug) {
             return NextResponse.json({ error: 'Post slug is required' }, { status: 400 });
         }
 
-        const { searchParams } = new URL(req.url);
+        const { searchParams } = new URL(request.url);
         const per_page = searchParams.get('per_page') || '2'; // Default: 10 posts per page
         const page = searchParams.get('page') || '1'; // Default: First page
 

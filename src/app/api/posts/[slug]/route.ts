@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const WP_API_URL = 'https://shortbites.ai/wp-json/wp/v2';
 
-export async function GET(req: NextRequest, { params }: { params: { slug: string } }) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ slug: string }>  }) {
     try {
-        const { slug } = params;
+        const { slug } = await params;
         if (!slug) {
             return NextResponse.json({ error: 'Slug is required' }, { status: 400 });
         }

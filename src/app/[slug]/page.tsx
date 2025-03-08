@@ -3,16 +3,15 @@ import SkeletonCard from '@/components/SkeletonCard'
 import { notFound } from 'next/navigation'
 import React from 'react'
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params
+export default async function Page(props:any) {
+  const slug =await  props?.params?.slug;
 
-  // Fetch post data from Next.js API instead of WordPress
-  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
-    cache: 'no-store', // Disable caching for fresh data
-  })
+  // Fetch data dynamically
+  const res = await fetch(`https://shortbites.ai/api/posts/${slug}`);
 
-  if (!res.ok) return notFound()
-  const post = await res.json()
+  if (!res.ok) return notFound(); // Show 404 if post doesn't exist
+
+  const post = await res.json();
 
   const initialPosts = [post]
   return (
