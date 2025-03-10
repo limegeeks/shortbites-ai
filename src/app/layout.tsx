@@ -15,6 +15,7 @@ import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } 
 import { headers } from "next/headers";
 import { isMobile } from "@/lib/utils";
 import ClientComponent from "@/components/ClientComponent";
+
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -62,6 +63,7 @@ export default async function RootLayout({
            
             {children}
           </SidebarProvider>
+     
         </QueryProvider>
       </body>
     </html>

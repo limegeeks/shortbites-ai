@@ -90,6 +90,13 @@ const NewsCard = ({ title,   excerpt, content, imageUrl, index }: NewsCardProps)
 
        {/* Collapsed View (Default) */}
        {!expanded && (
+
+
+<React.Fragment> 
+
+<div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+
+
           <div className="absolute bottom-8 right-4 left-4 text-white">
            
         
@@ -118,6 +125,8 @@ const NewsCard = ({ title,   excerpt, content, imageUrl, index }: NewsCardProps)
               </Button>
             </div>
           </div>
+       
+          </React.Fragment>
         )}
       </motion.div>
   {/* Expanded View */}

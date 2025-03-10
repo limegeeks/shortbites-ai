@@ -40,7 +40,14 @@ export async function getInitialPosts( page = 1, limit = 3, category = "" ) {
     if (type === "category" && categorySlug) {
       url += `&category=${categorySlug}`;
     } else if (type === "related" && postSlug) {
-      url = `/api/posts/{postSlug}`;
+
+      if(pageParam == 1) {
+        pageParam = 2; 
+      }
+       console.log("url is", url);
+        
+   
+      url = `http://localhost:3000/api/posts/${postSlug}/related?page=${pageParam}&per_page=${3}&embed`;
     }
   console.log("url in get posts is",url);
   

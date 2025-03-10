@@ -86,7 +86,9 @@ const NewsCard = ({ title, slug, date, categories, excerpt, content, imageUrl, i
 
        {/* Collapsed View (Default) */}
        {!expanded && (
+        
           <div className="absolute bottom-8 right-4 left-4 text-white">
+             
             <div className="rounded-full">{date}</div>
 
             {/* Categories */}

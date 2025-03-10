@@ -9,6 +9,7 @@ import { Skeleton } from "../ui/skeleton";
 import React from "react";
 import Ad from "../Ad";
 import CardNew from "../CardNew";
+import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 interface Post {
     id: number;
     title: { rendered: string };  // ✅ Titles are inside a "rendered" object
@@ -30,6 +31,8 @@ interface Post {
     postSlug?: string | undefined;  // ✅ Optional postId (for related posts)
   }
 export default function PostsList({ initialPosts, type, categorySlug, postSlug } : PostsListProps) {
+
+  const qc = new QueryClient()
   const observerRef = useRef(null);
 //     const queryClient = useQueryClient();
 
@@ -42,7 +45,15 @@ export default function PostsList({ initialPosts, type, categorySlug, postSlug }
     hasNextPage,
     isFetchingNextPage,
 
-  } = useInfinitePosts({ type, categorySlug, postSlug });
+  } = useInfinitePosts({ initialPosts, type, categorySlug, postSlug });
+
+
+
+
+  console.log("data is", data);
+  console.log("initial posts for " + postSlug, initialPosts);
+  
+  
 
   const lastPostRef = useRef<HTMLDivElement | null>(null);
 
@@ -66,6 +77,7 @@ export default function PostsList({ initialPosts, type, categorySlug, postSlug }
 
 
   return (
+    <HydrationBoundary queryClient={qc}>
     <section className="w-full mx-auto">
     <Suspense fallback={<SkeletonCard />}>
    
@@ -121,12 +133,10 @@ export default function PostsList({ initialPosts, type, categorySlug, postSlug }
     </Suspense>
 
 
-    <div className="absolute bottom-0 right-8"> 
 
-        {JSON.stringify(data?.pageParams[data?.pageParams.length - 1])}
-    </div>
    <div ref={observerRef} className="h-32 w-full" /> 
     
       </section>
+      </HydrationBoundary>
   );
 }
