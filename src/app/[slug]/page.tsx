@@ -23,19 +23,19 @@ async function getPost(slug: string) {
   }
 
 
-// SEO Metadata
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const post = await getPost(params.slug);
-    return {
-      title: post?.title?.rendered || 'ShortBites.ai',
-      description: post?.excerpt?.rendered.replace(/<[^>]+>/g, '') || 'Latest short news bites.',
-      openGraph: {
-        title: post?.title?.rendered,
-        description: post?.excerpt?.rendered.replace(/<[^>]+>/g, ''),
-        images: [{ url: post?._embedded?.["wp:featuredmedia"]?.[0]?.source_url || '/default-image.jpg' }],
-      },
-    };
-  }
+// // SEO Metadata
+// export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+//     const post = await getPost(params.slug);
+//     return {
+//       title: post?.title?.rendered || 'ShortBites.ai',
+//       description: post?.excerpt?.rendered.replace(/<[^>]+>/g, '') || 'Latest short news bites.',
+//       openGraph: {
+//         title: post?.title?.rendered,
+//         description: post?.excerpt?.rendered.replace(/<[^>]+>/g, ''),
+//         images: [{ url: post?._embedded?.["wp:featuredmedia"]?.[0]?.source_url || '/default-image.jpg' }],
+//       },
+//     };
+//   }
   
 
 export default async function Page(props:any) {
