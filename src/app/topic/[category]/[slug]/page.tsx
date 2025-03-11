@@ -18,7 +18,7 @@ export default async function Page({ params }: { params: Promise< { slug: string
 
   const initialPosts = [post]
   return (
-    <div className="w-3xl h-screen mx-auto p-6">
+    <div className="w-5xl h-screen mx-auto p-6">
   
         
         <React.Suspense fallback={<SkeletonCard />}> 
