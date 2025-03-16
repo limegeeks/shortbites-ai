@@ -4,7 +4,7 @@ import { Drawer, DrawerTrigger, DrawerContent } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import { Copy, Facebook, Twitter, Linkedin, } from "lucide-react";
 
-export default function ShareBox({ url }) {
+export default function ShareBox({ url } : {url: string}) {
   const [copied, setCopied] = useState(false);
   
   const handleCopy = () => {
