@@ -13,6 +13,9 @@ import Link from 'next/link';
 import React from 'react';
 import SkeletonCard from './SkeletonCard';
 import { Separator } from '@radix-ui/react-separator';
+import ShareBox from './ShareBox';
+import { Drawer } from '@/components/ui/drawer';
+import { DrawerTrigger } from './ui/drawer';
 // Dynamically import SafeHTML to fix hydration issues
 const SafeHTML = dynamic(() => import('./safehtml/Html'), { ssr: false });
 export interface Category {
@@ -59,9 +62,9 @@ const NewsCard = ({ title, slug, date, categories, excerpt, content, imageUrl, i
       key={index}
       className={`relative p-0 sm:h-[calc(100vh-250px)] sm:overflow-hidden  block snap-center mx-auto  ${index === 0 ? 'sm:mt-64 ' : 'sm:my-8'} 
                  rounded-none  max-w-3xl 
-                 sm:rounded-2xl overflow-hidden shadow-lg cursor-pointer`}
+                 sm:rounded-2xl overflow-hidden shadow-lg cursor-pointer prose prose-lg`}
     >
-      
+<Drawer>
       {/* Clickable Area */}
       <motion.div  initial={{ scale: 1 }} whileTap={{ scale: 1 }}>
         {/* Image Section */}
@@ -143,7 +146,7 @@ const NewsCard = ({ title, slug, date, categories, excerpt, content, imageUrl, i
               <Separator />
             {/* Content - Ensures Scroll Works on Mobile */}
             <CardContent
-              className="flex-1 text-white overflow-y-auto  px-6 scrollbar-thin scrollbar-thumb-amber-400 scrollbar-track-amber-600"
+              className="flex-1 text-white overflow-y-auto prose  px-6 scrollbar-thin scrollbar-thumb-amber-400 scrollbar-track-amber-600"
               style={{ WebkitOverflowScrolling: "touch" }}
             >
 
@@ -165,8 +168,12 @@ const NewsCard = ({ title, slug, date, categories, excerpt, content, imageUrl, i
         <ActionButton onClick={() => {}} icon={<ThumbsUp size={24} />} />
         <ActionButton onClick={() => {}} icon={<MessageCircle size={24} />} />
         <ActionButton onClick={() => {}} icon={<Share size={24} />} />
+        <DrawerTrigger ><Share size={24} /> </DrawerTrigger>
         <ActionButton onClick={() => {}} icon={<Bookmark size={24} />} />
       </div>
+
+      </Drawer>
+
     </Card>
   );
 };

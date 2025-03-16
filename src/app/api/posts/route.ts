@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const WP_API_URL = 'https://shortbites.ai/wp-json/wp/v2';
+const WP_API_URL = 'https://classic.shortbites.ai/wp-json/wp/v2';
 
 export async function GET(req: NextRequest) {
 

@@ -11,7 +11,7 @@ export async function GET(req: Request) {
     }
 
     // Fetch search results from WordPress API
-    const res = await fetch(`https://shortbites.ai/wp-json/wp/v2/posts?search=${query}&_fields=id,slug,title,excerpt`, {
+    const res = await fetch(`https://classic.shortbites.ai/wp-json/wp/v2/posts?search=${query}&_fields=id,slug,title,excerpt`, {
       headers: { 'Content-Type': 'application/json' },
       cache: 'no-store', // Prevent caching for fresh results
     })
