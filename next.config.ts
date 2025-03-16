@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'www.shortbites.ai',
+        hostname: 'classic.shortbites.ai',
         port: '',
         pathname: '/wp-content/uploads/**',
       },

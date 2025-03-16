@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Latest News - ShortBites.ai",
     description: "Get the latest news in a short-form format.",
-    url: "https://shortbites.ai",
+    url: "https://classic.shortbites.ai",
     siteName: "ShortBites.ai",
     type: "website",
   },

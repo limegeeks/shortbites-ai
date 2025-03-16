@@ -97,7 +97,7 @@ export default function PostsList({ initialPosts, type, categorySlug, postSlug }
         return (
 
        <React.Fragment key={index}> 
-         <article id={"article-"+index} key={index} className=" snap-always snap-mandatory snap-center w-full  bg-white">
+         <article id={"article-"+index} key={index} className=" snap-always snap-mandatory snap-center w-full  prose prose-lg bg-white">
    
    <CardNew 
   
