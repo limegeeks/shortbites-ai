@@ -1,27 +1,44 @@
 
-
+'use client'
 // import { Bell, CircleUser, Menu, MenuIcon, MenuSquareIcon, UserCircle2, X } from "lucide-react"; // Icon library for the menu
 import Image from "next/image";
 import Link from "next/link";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import SidebarToggle from "./SidebarToggle";
 import { Button } from "../ui/button";
-import { Bell, Menu, Search, SearchIcon, User, UserCircle2 } from "lucide-react";
+import { Bell, ChevronDown, Menu, Search, SearchIcon, User, UserCircle2 } from "lucide-react";
 import { CountrySelect } from "./CountrySelect";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Input } from "../ui/input";
 import { Card, CardDescription, CardTitle } from "../ui/card";
 import ToggleMenuComponent from "./ToggleMenuComponent";
 import AutoSuggestSearch from "./search/AutoSuggestSearch";
+import { useScroll } from "@/providers/ScrollProvider";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from '@/components/ui/dropdown-menu'
+import { useRouter } from "next/router";
  
 export default   function Header(props: any) {
+
+  const { hideHeader, currentPost } = useScroll();
+  const handleSelect = (value: string) => {
+    if (value === "classic") {
+      window.location.href = "https://classic.shortbites.ai"; // Full page navigation
+    } else {
+      // router.push(`/${value}`); // Internal Next.js navigation
+    }
+  };
+console.log("hide header is", hideHeader);
+console.log("current post is", currentPost);
 
 const {categories} = props;
   // const [isOpen, setIsOpen] = useState(false);
 
+console.log("hide header is", hideHeader);
 
   return (
-    <header className="  bg-slate-50/80 backdrop-blur-lg absolute   top-0 left-0 w-full shadow-md z-50">
+    <header className={`  header bg-slate-50/80 backdrop-blur-lg absolute   top-0 left-0 w-full shadow-md z-50 transform ${
+        hideHeader ? "-translate-y-full   transition-all duration-500  slide-in-from-bottom " : "translate-y-0    transition-all duration-500  slide-out-to-bottom" }
+    `}>
       <div className=" mx-auto flex  items-center justify-evenly p-4">
 
       
@@ -51,7 +68,18 @@ const {categories} = props;
         <div className=" hidden sm:block "> 
           <CountrySelect  />
           </div>
+          <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" className="flex items-center gap-2">
+         Select Style  <ChevronDown size={16} />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+      <DropdownMenuItem disabled onClick={() => handleSelect("modern")}>Shorts</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleSelect("classic")}>Classic</DropdownMenuItem>
        
+      </DropdownMenuContent>
+    </DropdownMenu>
           <DialogTrigger  className="hover:bg-slate-100 hover:rounded-full hover:border-1 h-8 w-8 flex justify-center mt-0.5 "> 
           
        

@@ -62,7 +62,7 @@ const NewsCard = ({ title, slug, date, categories, excerpt, content, imageUrl, i
       key={index}
       className={`relative p-0 sm:h-[calc(100vh-250px)] sm:overflow-hidden  block snap-center mx-auto  ${index === 0 ? 'sm:mt-64 ' : 'sm:my-8'} 
                  rounded-none  max-w-3xl 
-                 sm:rounded-2xl overflow-hidden shadow-lg cursor-pointer prose prose-lg`}
+                 sm:rounded-2xl overflow-hidden shadow-lg cursor-pointer `}
     >
 <Drawer>
       {/* Clickable Area */}
@@ -90,7 +90,7 @@ const NewsCard = ({ title, slug, date, categories, excerpt, content, imageUrl, i
        {/* Collapsed View (Default) */}
        {!expanded && (
         
-          <div className="absolute bottom-8 right-4 left-4 text-white">
+          <div className="absolute bottom-8 pr-8 right-4 left-4 text-white">
              
             <div className="rounded-full">{date}</div>
 
@@ -100,7 +100,8 @@ const NewsCard = ({ title, slug, date, categories, excerpt, content, imageUrl, i
                 <Link
                   href={`/topic/${category.slug}`}
                   key={idx}
-                  className="bg-amber-600 text-white text-xs font-bold mr-2 px-2 py-1 rounded-full"
+                  className="bg-amber-600 text-white  no-underline
+ text-lg font-bold mr-2 px-2 py-1 rounded-full"
                 >
                   {category.name}
                 </Link>
@@ -108,8 +109,8 @@ const NewsCard = ({ title, slug, date, categories, excerpt, content, imageUrl, i
             </div>
 
             {/* Title & Excerpt */}
-            <h2 className="text-xl font-bold">{title}</h2>
-            <div className="text-sm opacity-80">
+            <h2 className="text-3xl text-slate-50  font-bold">{title}</h2>
+            <div className="text-xl opacity-80">
               <SafeHTML html={excerpt} />
             </div>
 
@@ -131,7 +132,7 @@ const NewsCard = ({ title, slug, date, categories, excerpt, content, imageUrl, i
   <AnimatePresence>
         {expanded && (
           <motion.div
-            className="absolute inset-0 bg-slate-600/80 backdrop-blur-lg  rounded-2xl shadow-lg 
+            className="absolute inset-0 bg-slate-600/80 backdrop-blur-lg   rounded-2xl shadow-lg 
                        flex flex-col max-h-[100vh] overflow-hidden pt-[100.6px] sm:py-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -140,13 +141,13 @@ const NewsCard = ({ title, slug, date, categories, excerpt, content, imageUrl, i
            
 
             {/* Title */}
-            <CardTitle className="text-xl  text-white font-bold mb-2 sm:px-8">
+            <CardTitle className="text-3xl  text-white font-bold mb-2 sm:px-8">
               <SafeHTML html={title} />
             </CardTitle>
               <Separator />
             {/* Content - Ensures Scroll Works on Mobile */}
             <CardContent
-              className="flex-1 text-white overflow-y-auto prose  px-6 scrollbar-thin scrollbar-thumb-amber-400 scrollbar-track-amber-600"
+              className="flex-1 text-white overflow-y-auto  text-xl  px-6 scrollbar-thin scrollbar-thumb-amber-400 scrollbar-track-amber-600"
               style={{ WebkitOverflowScrolling: "touch" }}
             >
 
