@@ -32,6 +32,7 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import { Copy } from "lucide-react";
+import { Input } from "./ui/input";
 export default function ShareBox({ url } : {url: string}) {
   const [copied, setCopied] = useState(false);
   
@@ -49,9 +50,11 @@ export default function ShareBox({ url } : {url: string}) {
         <DialogTitle className="text-lg font-semibold text-center">
    Share this post
            </DialogTitle>
-        <DialogDescription  asChild > 
+        <DialogDescription   asChild > 
 
-          <div className="flex gap-4 mb-32 mx-auto">
+
+<div className="mx-auto flex flex-col"> 
+          <div className="flex gap-4 mx-auto">
           <FacebookShareButton url={url}>
             <FaFacebook className="w-8 h-8 text-blue-600 hover:scale-110 transition" />
           </FacebookShareButton>
@@ -88,18 +91,19 @@ export default function ShareBox({ url } : {url: string}) {
             <FaInstagram className="w-8 h-8 text-pink-500 hover:scale-110 transition" />
           </InstapaperShareButton>
                 {/* Copy Link Button */}
-        <div className="flex justify-center mt-4">
-          <Button
-            onClick={handleCopy}
-            variant="outline"
-            className="flex items-center gap-2"
-          >
-            <Copy className="w-4 h-4" /> Copy Link
-          </Button>
-        </div>
+     
             
              </div>
-        
+           {/* Copy Link Section */}
+           <div className="flex items-center gap-2 mt-4">
+          <Input value={url} readOnly className="flex-1 text-gray-600 bg-gray-100" />
+          <Button onClick={handleCopy} variant="outline" className="flex items-center gap-2">
+            <Copy className="w-4 h-4" /> {copied ? "Copied!" : "Copy"}
+          </Button>
+        </div>
+        </div>
+
+
         </DialogDescription>
 
   
