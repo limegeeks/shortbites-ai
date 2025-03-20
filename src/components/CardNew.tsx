@@ -167,17 +167,19 @@ const NewsCard = ({ title, slug, date, categories, excerpt, content, imageUrl, i
           icon={expanded ? <FoldVerticalIcon size={24} /> : <UnfoldVerticalIcon size={24} />}
         />
         <ActionButton onClick={() => {}} icon={<ThumbsUp size={24} />} />
-        <ActionButton onClick={() => {}} icon={<MessageCircle size={24} />} />
-        <ActionButton onClick={() => {}} icon={<Share size={24} />} />
-        <DrawerTrigger ><Share size={24} /> </DrawerTrigger>
+        <DrawerTrigger className=' bg-black/50 text-white p-2 rounded-full hover:bg-200/70' ><Share size={18} /> </DrawerTrigger>
         <ActionButton onClick={() => {}} icon={<Bookmark size={24} />} />
       </div>
 
+          <ShareBox url={'https://shortbites.ai/'+slug} />
       </Drawer>
 
     </Card>
   );
 };
+
+
+
 
 export default NewsCard;
 
