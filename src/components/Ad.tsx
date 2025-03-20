@@ -55,6 +55,9 @@ const NewsCard = ({ title,   excerpt, content, imageUrl, index }: NewsCardProps)
   }, []);
   if (!hasMounted) return  <SkeletonCard />;
 
+
+  console.log("in ad component ");
+  
   return (
     <Card
       // ref={cardRef}
@@ -69,13 +72,13 @@ const NewsCard = ({ title,   excerpt, content, imageUrl, index }: NewsCardProps)
         {/* Image Section */}
      
           <React.Fragment> 
-          <div className="relative w-full  max-h-full min-w-3xl min-h-[calc(100vh)] sm:max-h-[calc(100vh-250px)]">
+          <div className="relative w-full overflow-hidden  max-h-full min-w-3xl min-h-[calc(100vh)] sm:max-h-[calc(100vh-250px)]">
             <Image 
               // priority={index % 4 === 0}
               // placeholder="blur"
               
               // blurDataURL="/ad.png"
-              src={"/ad.png"}
+              src={"/ad.gif"}
               alt={"Post your ad with us"}
               width={768}
               height={1201}
@@ -83,7 +86,12 @@ const NewsCard = ({ title,   excerpt, content, imageUrl, index }: NewsCardProps)
                 objectFit="fit"
               className=" h-full w-full object-fit top-0 bottom-0 absolute"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+
+{/* <video  className=' h-full w-full object-cover top-0 bottom-0 sticky' loop  autoPlay >
+  <source src="/advideo.mp4" type="video/mp4" />
+Your browser does not support the video tag.
+</video> */}
+            {/* <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div> */}
           </div>
           </React.Fragment>
      
@@ -133,7 +141,7 @@ const NewsCard = ({ title,   excerpt, content, imageUrl, index }: NewsCardProps)
   <AnimatePresence>
         {expanded && (
           <motion.div
-            className="absolute inset-0 bg-amber-500/80 backdrop-blur-lg  rounded-2xl shadow-lg 
+            className="absolute inset-0 bg-slate-500/80 backdrop-blur-lg  rounded-2xl shadow-lg 
                        flex flex-col max-h-[100vh] overflow-hidden pt-[100.6px] sm:py-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -151,31 +159,30 @@ const NewsCard = ({ title,   excerpt, content, imageUrl, index }: NewsCardProps)
               className="flex-1 text-white overflow-y-auto  px-6 scrollbar-thin scrollbar-thumb-amber-400 scrollbar-track-amber-600"
               style={{ WebkitOverflowScrolling: "touch" }}
             >
+<div className='h-4' />
+<div className="mt-6 space-y-4">
+  <h3 className="text-xl font-semibold">📈 <span className="font-bold">Why Advertise with Us?</span></h3>
+  <ul className="list-disc list-inside space-y-2">
+    <li>🔥 <span className="font-bold">High Engagement</span> – Ads appear in a Shorts-style experience.</li>
+    <li>⏳ <span className="font-bold">Short & Impactful</span> – Grab attention in <span className="font-bold">seconds</span>.</li>
+    <li>🎯 <span className="font-bold">Targeted Reach</span> – Get in front of the right audience.</li>
+    <li>💰 <span className="font-bold">Better ROI</span> – Native ads lead to <span className="font-bold">higher conversions</span>.</li>
+  </ul>
+</div>
 
-              <div className='h-4' />
-              <div className="mt-6 space-y-4">
-            <h3 className="text-xl font-semibold">📈 Why Advertise with Us?</h3>
-            <ul className="list-disc list-inside   space-y-2">
-              <li>🔥 **High Engagement** – Ads appear in a Shorts-style experience.</li>
-              <li>⏳ **Short & Impactful** – Grab attention in **seconds**.</li>
-              <li>🎯 **Targeted Reach** – Get in front of the right audience.</li>
-              <li>💰 **Better ROI** – Native ads lead to **higher conversions**.</li>
-            </ul>
-          </div>
+<div className="mt-6 space-y-4">
+  <h3 className="text-xl font-semibold">📢 <span className="font-bold">Ad Formats We Offer</span></h3>
+  <ul className="list-disc list-inside space-y-2">
+    <li>🎬 <span className="font-bold">Shorts-Style Video Ads</span> – 5 to 15-second engaging video placements.</li>
+    <li>📰 <span className="font-bold">Sponsored Shorts</span> – Blend your brand with trending news.</li>
+    <li>📊 <span className="font-bold">Banner Ads</span> – High-visibility static or animated banners.</li>
+    <li>🚀 <span className="font-bold">Call-to-Action (CTA) Cards</span> – Instantly direct users to your service.</li>
+  </ul>
+</div>
 
-          <div className="mt-6 space-y-4">
-            <h3 className="text-xl font-semibold">📢 Ad Formats We Offer</h3>
-            <ul className="list-disc list-inside   space-y-2">
-              <li>🎬 **Shorts-Style Video Ads** – 5 to 15-second engaging video placements.</li>
-              <li>📰 **Sponsored Shorts** – Blend your brand with trending news.</li>
-              <li>📊 **Banner Ads** – High-visibility static or animated banners.</li>
-              <li>🚀 **Call-to-Action (CTA) Cards** – Instantly direct users to your service.</li>
-            </ul>
-          </div>
-
-          <p className="mt-6 text-lg text-center font-black ">
-            **Don’t just advertise—engage!** Place your ads on **ShortBites.ai** and watch your brand grow.
-          </p>
+<p className="mt-6 text-lg text-center font-black">
+  Don’t just advertise—engage! Place your ads on <span className="font-bold">ShortBites.ai</span> and watch your brand grow.
+</p>
 
           <div className="mt-6 flex justify-center">
             <Link href={link} className="px-6 py-3 text-lg" >

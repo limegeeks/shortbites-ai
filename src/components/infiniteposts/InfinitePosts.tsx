@@ -10,6 +10,7 @@ import React from "react";
 import Ad from "../Ad";
 import CardNew from "../CardNew";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
+import { useScroll } from "@/providers/ScrollProvider";
 interface Post {
     id: number;
     title: { rendered: string };  // ✅ Titles are inside a "rendered" object
@@ -31,7 +32,9 @@ interface Post {
     postSlug?: string | undefined;  // ✅ Optional postId (for related posts)
   }
 export default function PostsList({ initialPosts, type, categorySlug, postSlug } : PostsListProps) {
-
+  const mainRef = useRef<HTMLElement | null>(null);
+  const { setHideHeader } = useScroll();
+  let lastScrollTop = 0;
   const qc = new QueryClient()
   const observerRef = useRef(null);
 //     const queryClient = useQueryClient();
@@ -55,7 +58,38 @@ export default function PostsList({ initialPosts, type, categorySlug, postSlug }
   
   
 
-  const lastPostRef = useRef<HTMLDivElement | null>(null);
+  let scrollTimeout: NodeJS.Timeout | null = null;
+
+  useEffect(() => {
+    const main = mainRef.current;
+    if (!main) return;
+
+    const handleScroll = () => {
+      const currentScrollTop = main.scrollTop;
+
+      if (currentScrollTop > lastScrollTop) {
+        // Scrolling down → Hide header
+        setHideHeader(true);
+      } else {
+        // Scrolling up → Show header
+        setHideHeader(false);
+      }
+
+      lastScrollTop = currentScrollTop;
+
+      // If scrolling stops for 300ms, ensure header remains visible
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setHideHeader(false);
+      }, 500);
+    };
+
+    main.addEventListener("scroll", handleScroll);
+    return () => {
+      main.removeEventListener("scroll", handleScroll);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+    };
+  }, [setHideHeader]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -64,7 +98,7 @@ export default function PostsList({ initialPosts, type, categorySlug, postSlug }
           fetchNextPage();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.95 }
     );
 
     if (observerRef.current) observer.observe(observerRef.current);
@@ -77,6 +111,9 @@ export default function PostsList({ initialPosts, type, categorySlug, postSlug }
 
 
   return (
+
+    <main ref={mainRef} className="dark:bg-slate-900 dark:text-white w-full   overflow-y-auto snap-y snap-mandatory h-screen snap-always font-[family-name:var(--font-geist-sans)]
+    ">
     <HydrationBoundary queryClient={qc}>
     <section className="w-full mx-auto">
     <Suspense fallback={<SkeletonCard />}>
@@ -97,7 +134,7 @@ export default function PostsList({ initialPosts, type, categorySlug, postSlug }
         return (
 
        <React.Fragment key={index}> 
-         <article id={"article-"+index} key={index} className=" snap-always snap-mandatory snap-center w-full  prose prose-lg bg-white">
+         <article id={"article-"+index} key={index} className=" snap-always snap-mandatory snap-center w-full  bg-white">
    
    <CardNew 
   
@@ -138,5 +175,6 @@ export default function PostsList({ initialPosts, type, categorySlug, postSlug }
     
       </section>
       </HydrationBoundary>
+      </main>
   );
 }

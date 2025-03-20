@@ -15,6 +15,7 @@ import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } 
 import { headers } from "next/headers";
 import { isMobile } from "@/lib/utils";
 import ClientComponent from "@/components/ClientComponent";
+import { ScrollProvider } from "@/providers/ScrollProvider";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -48,20 +49,23 @@ export default async function RootLayout({
     <html lang="en">
 
       <body
-        className={`
+        className={` scrolled-up 
         antialiased dark:bg-slate-800 dark:text-white`}
       >
 
         <QueryProvider>
+
           <SidebarProvider>
    <ClientComponent />
-
+   <ScrollProvider>
             <Header categories={categories} />
             
                      
             <AppSidebar categories={categories} />
+   
            
             {children}
+            </ScrollProvider>
           </SidebarProvider>
      
         </QueryProvider>
