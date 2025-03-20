@@ -16,6 +16,7 @@ import { headers } from "next/headers";
 import { isMobile } from "@/lib/utils";
 import ClientComponent from "@/components/ClientComponent";
 import { ScrollProvider } from "@/providers/ScrollProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -65,6 +66,7 @@ export default async function RootLayout({
    
            
             {children}
+            <Toaster />
             </ScrollProvider>
           </SidebarProvider>
      
