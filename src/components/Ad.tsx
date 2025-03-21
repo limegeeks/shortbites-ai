@@ -13,6 +13,7 @@ import Link from 'next/link';
 import React from 'react';
 import SkeletonCard from './SkeletonCard';
 import { Separator } from '@radix-ui/react-separator';
+import GoogleAd from './GoogleAd';
 // Dynamically import SafeHTML to fix hydration issues
 const SafeHTML = dynamic(() => import('./safehtml/Html'), { ssr: false });
 export interface Category {
@@ -73,7 +74,8 @@ const NewsCard = ({ title,   excerpt, content, imageUrl, index }: NewsCardProps)
      
           <React.Fragment> 
           <div className="relative w-full overflow-hidden  max-h-full min-w-3xl min-h-[calc(100vh)] sm:max-h-[calc(100vh-250px)]">
-            <Image 
+          
+          {index + 1 % 12 == 0 ? <GoogleAd /> :    <Image 
               // priority={index % 4 === 0}
               // placeholder="blur"
               
@@ -85,7 +87,8 @@ const NewsCard = ({ title,   excerpt, content, imageUrl, index }: NewsCardProps)
                 layout={"fit"}
                 objectFit="fit"
               className=" h-full w-full object-fit top-0 bottom-0 absolute"
-            />
+            /> }
+         
 
 {/* <video  className=' h-full w-full object-cover top-0 bottom-0 sticky' loop  autoPlay >
   <source src="/advideo.mp4" type="video/mp4" />
