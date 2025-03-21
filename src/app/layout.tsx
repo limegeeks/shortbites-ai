@@ -17,6 +17,7 @@ import { isMobile } from "@/lib/utils";
 import ClientComponent from "@/components/ClientComponent";
 import { ScrollProvider } from "@/providers/ScrollProvider";
 import { Toaster } from "@/components/ui/sonner";
+import Script from "next/script";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -48,7 +49,15 @@ export default async function RootLayout({
   
   return (
     <html lang="en">
-
+   <head>
+        {/* Google AdSense Script */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9306869059364850"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body
         className={` scrolled-up 
         antialiased dark:bg-slate-800 dark:text-white`}
