@@ -50,6 +50,9 @@ export default function ShareBox({ url } : {url: string}) {
         <DialogTitle className="text-lg font-semibold text-center">
    Share this post
            </DialogTitle>
+
+
+           
         <DialogDescription   asChild > 
 
 
@@ -102,6 +105,11 @@ export default function ShareBox({ url } : {url: string}) {
           </Button>
         </div>
         </div>
+
+
+
+
+
 
 
         </DialogDescription>
