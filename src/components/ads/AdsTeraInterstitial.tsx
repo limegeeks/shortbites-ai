@@ -18,8 +18,13 @@ const AdsterraNativeBanner = () => {
         strategy="lazyOnload"
       />
 
+   
+
+     
+
       {/* Ad Container */}
-      <div id="container-ac0600f24ff4e215b7c2ee2f218923a5" className="w-full max-h-[calc(100vh-300px)] max-w-[728px]"></div>
+      <div id="container-ac0600f24ff4e215b7c2ee2f218923a5" className="w-full min-h-[100vh-120px] max-h-[calc(100vh)] max-w-[728px]"></div>
+      
     </div>
   );
 };

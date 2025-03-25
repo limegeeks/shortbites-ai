@@ -153,7 +153,8 @@ export default function PostsList({ initialPosts, type, categorySlug, postSlug }
 
        </article>
 
-       {((index + 1) % 3 === 0) &&  <AdsterraInterstitial />  }
+       {((index + 1) % 3 === 0) &&   <article id={"ad-article-"+index} key={"ad"+index} className=" snap-always snap-mandatory snap-center w-full  bg-white">
+       <Ad title={""} slug={""} date={""} categories={[]} excerpt={""} content={""} index={index+1} />  </article> }
        </React.Fragment>
       )}
     )}
