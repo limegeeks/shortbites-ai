@@ -11,6 +11,7 @@ import Ad from "../Ad";
 import CardNew from "../CardNew";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 import { useScroll } from "@/providers/ScrollProvider";
+import AdsterraInterstitial from "../ads/AdsTeraInterstitial";
 interface Post {
     id: number;
     title: { rendered: string };  // ✅ Titles are inside a "rendered" object
@@ -152,7 +153,7 @@ export default function PostsList({ initialPosts, type, categorySlug, postSlug }
 
        </article>
 
-       {((index + 1) % 3 === 0) && <Ad index={index} title={""} slug={""} date={""} categories={[]} excerpt={""} content={""} />} {/* Insert Ad every 3rd post */}
+       {((index + 1) % 3 === 0) &&  <AdsterraInterstitial />  }
        </React.Fragment>
       )}
     )}
