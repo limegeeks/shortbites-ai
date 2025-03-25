@@ -59,6 +59,7 @@ export default async function RootLayout({
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+      
       </head>
       <body
         className={` scrolled-up 
@@ -75,7 +76,28 @@ export default async function RootLayout({
                      
             <AppSidebar categories={categories} />
    
-           
+            <div className="w-[160px] h-[600px] mx-auto">
+      <Script
+        id="ad-options"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            atOptions = {
+              'key' : '8b7ef591826364dab76dce8a07e8e70f',
+              'format' : 'iframe',
+              'height' : 600,
+              'width' : 160,
+              'params' : {}
+            };
+          `,
+        }}
+      />
+      <Script
+        id="ad-script"
+        strategy="afterInteractive"
+        src="//www.highperformanceformat.com/8b7ef591826364dab76dce8a07e8e70f/invoke.js"
+      />
+    </div>  
             {children}
             <Toaster />
             </ScrollProvider>
