@@ -11,7 +11,8 @@ import Ad from "../Ad";
 import CardNew from "../CardNew";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 import { useScroll } from "@/providers/ScrollProvider";
-import AdsterraInterstitial from "../ads/AdsTeraInterstitial";
+import Script from "next/script";
+import Adclip from "../ads/Adclip";
 interface Post {
     id: number;
     title: { rendered: string };  // ✅ Titles are inside a "rendered" object
@@ -118,7 +119,7 @@ export default function PostsList({ initialPosts, type, categorySlug, postSlug }
     <HydrationBoundary queryClient={qc}>
     <section className="w-full mx-auto">
     <Suspense fallback={<SkeletonCard />}>
-   
+
       {data?.pages.flat().map((post, index) =>    { 
         
         
@@ -135,6 +136,7 @@ export default function PostsList({ initialPosts, type, categorySlug, postSlug }
         return (
 
        <React.Fragment key={index}> 
+       
          <article id={"article-"+index} key={index} className=" snap-always snap-mandatory snap-center w-full  bg-white">
    
    <CardNew 
@@ -154,7 +156,8 @@ export default function PostsList({ initialPosts, type, categorySlug, postSlug }
        </article>
 
        {((index + 1) % 3 === 0) &&   <article id={"ad-article-"+index} key={"ad"+index} className=" snap-always snap-mandatory snap-center w-full  bg-white">
-       <Ad title={""} slug={""} date={""} categories={[]} excerpt={""} content={""} index={index+1} />  </article> }
+
+       </article> }
        </React.Fragment>
       )}
     )}
