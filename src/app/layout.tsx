@@ -18,6 +18,7 @@ import ClientComponent from "@/components/ClientComponent";
 import { ScrollProvider } from "@/providers/ScrollProvider";
 import { Toaster } from "@/components/ui/sonner";
 import Script from "next/script";
+import Adclip from "@/components/ads/Adclip";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -51,15 +52,8 @@ export default async function RootLayout({
     <html lang="en">
    <head>
    <meta name="google-adsense-account" content="ca-pub-9306869059364850" />
+   {/* Load AdClerks Library */}
 
-        {/* Google AdSense Script */}
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9306869059364850"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-      
       </head>
       <body
         className={` scrolled-up 
@@ -76,28 +70,7 @@ export default async function RootLayout({
                      
             <AppSidebar categories={categories} />
    
-            <div className="w-[160px] h-[600px] mx-auto">
-      <Script
-        id="ad-options"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            atOptions = {
-              'key' : '8b7ef591826364dab76dce8a07e8e70f',
-              'format' : 'iframe',
-              'height' : 600,
-              'width' : 160,
-              'params' : {}
-            };
-          `,
-        }}
-      />
-      <Script
-        id="ad-script"
-        strategy="afterInteractive"
-        src="//www.highperformanceformat.com/8b7ef591826364dab76dce8a07e8e70f/invoke.js"
-      />
-    </div>  
+      
             {children}
             <Toaster />
             </ScrollProvider>
