@@ -1,24 +1,27 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Script from "next/script";
 
-const AdsterraInterstitial = () => {
- 
-  return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-50">
-      {/* Adsterra Script - Loads only when the ad is shown */}
-      <Script
-        src="//pl26215048.effectiveratecpm.com/ac0600f24ff4e215b7c2ee2f218923a5/invoke.js"
-        strategy="afterInteractive"
-      />
-      
-      <div className="w-full h-full">
-        <div id="container-ac0600f24ff4e215b7c2ee2f218923a5"></div>
-      </div>
+const AdsterraNativeBanner = () => {
+  useEffect(() => {
+    console.log("Adsterra Native Banner Loaded!");
+  }, []);
 
+  return (
+    <div className="w-full my-4 flex justify-center">
+      {/* Load Adsterra script */}
+      <Script
+        async
+        data-cfasync="false"
+        src="//pl26215048.effectiveratecpm.com/ac0600f24ff4e215b7c2ee2f218923a5/invoke.js"
+        strategy="lazyOnload"
+      />
+
+      {/* Ad Container */}
+      <div id="container-ac0600f24ff4e215b7c2ee2f218923a5" className="w-full max-h-[calc(100vh-300px)] max-w-[728px]"></div>
     </div>
   );
 };
 
-export default AdsterraInterstitial;
+export default AdsterraNativeBanner;
