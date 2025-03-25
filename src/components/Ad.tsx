@@ -46,7 +46,7 @@ const NewsCard = ({ title,   excerpt, content, imageUrl, index }: NewsCardProps)
   const [hasMounted, setHasMounted] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  const link = "https://classic.shortbites.ai"
+  const link = "https://www.effectiveratecpm.com/tgz5vi3d2?key=b2077a5d654f09638b63af2a9e4367e4"
   useEffect(() => {
     setHasMounted(true);
   }, []);
