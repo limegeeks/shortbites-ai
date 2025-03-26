@@ -40,8 +40,7 @@ import Script from "next/script";
             </SidebarGroup>
           <SidebarGroup />
         </SidebarContent>
-        <SidebarContent className="block relative">
-        </SidebarContent>
+      
         <SidebarFooter />
       </Sidebar>
     )
