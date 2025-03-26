@@ -13,7 +13,6 @@ import Link from "next/link";
 import { isMobile } from "@/lib/utils";
 import { headers } from "next/headers";
 import Script from "next/script";
-import Adclip from "./ads/Adclip";
    
   export async function AppSidebar(props: any) {
 
@@ -42,7 +41,6 @@ import Adclip from "./ads/Adclip";
           <SidebarGroup />
         </SidebarContent>
         <SidebarContent className="block relative">
-        <Adclip />
         </SidebarContent>
         <SidebarFooter />
       </Sidebar>

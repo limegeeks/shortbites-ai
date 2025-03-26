@@ -18,7 +18,6 @@ import ClientComponent from "@/components/ClientComponent";
 import { ScrollProvider } from "@/providers/ScrollProvider";
 import { Toaster } from "@/components/ui/sonner";
 import Script from "next/script";
-import Adclip from "@/components/ads/Adclip";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",

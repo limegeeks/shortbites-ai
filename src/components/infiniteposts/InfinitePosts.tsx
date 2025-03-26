@@ -12,7 +12,6 @@ import CardNew from "../CardNew";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 import { useScroll } from "@/providers/ScrollProvider";
 import Script from "next/script";
-import Adclip from "../ads/Adclip";
 interface Post {
     id: number;
     title: { rendered: string };  // ✅ Titles are inside a "rendered" object
