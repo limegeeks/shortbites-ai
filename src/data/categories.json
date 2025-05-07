@@ -1,323 +1,74 @@
 [
-    {
-        "id": 5,
-        "count": 2327,
-        "description": "",
-        "link": "https://www.shortbites.ai/category/business/",
-        "name": "Business",
-        "slug": "business",
-        "taxonomy": "category",
-        "parent": 0,
-        "meta": [],
-        "_links": {
-            "self": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories/5",
-                    "targetHints": {
-                        "allow": [
-                            "GET"
-                        ]
-                    }
-                }
-            ],
-            "collection": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories"
-                }
-            ],
-            "about": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/taxonomies/category"
-                }
-            ],
-            "wp:post_type": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/posts?categories=5"
-                }
-            ],
-            "curies": [
-                {
-                    "name": "wp",
-                    "href": "https://api.w.org/{rel}",
-                    "templated": true
-                }
-            ]
-        }
-    },
-    {
-        "id": 9,
-        "count": 10,
-        "description": "",
-        "link": "https://www.shortbites.ai/category/education/",
-        "name": "Education",
-        "slug": "education",
-        "taxonomy": "category",
-        "parent": 0,
-        "meta": [],
-        "_links": {
-            "self": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories/9",
-                    "targetHints": {
-                        "allow": [
-                            "GET"
-                        ]
-                    }
-                }
-            ],
-            "collection": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories"
-                }
-            ],
-            "about": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/taxonomies/category"
-                }
-            ],
-            "wp:post_type": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/posts?categories=9"
-                }
-            ],
-            "curies": [
-                {
-                    "name": "wp",
-                    "href": "https://api.w.org/{rel}",
-                    "templated": true
-                }
-            ]
-        }
-    },
-    {
-        "id": 7,
-        "count": 20,
-        "description": "",
-        "link": "https://www.shortbites.ai/category/electronics/",
-        "name": "Electronics",
-        "slug": "electronics",
-        "taxonomy": "category",
-        "parent": 0,
-        "meta": [],
-        "_links": {
-            "self": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories/7",
-                    "targetHints": {
-                        "allow": [
-                            "GET"
-                        ]
-                    }
-                }
-            ],
-            "collection": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories"
-                }
-            ],
-            "about": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/taxonomies/category"
-                }
-            ],
-            "wp:post_type": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/posts?categories=7"
-                }
-            ],
-            "curies": [
-                {
-                    "name": "wp",
-                    "href": "https://api.w.org/{rel}",
-                    "templated": true
-                }
-            ]
-        }
-    },
-    {
-        "id": 6,
-        "count": 26,
-        "description": "",
-        "link": "https://www.shortbites.ai/category/industry/",
-        "name": "Industry",
-        "slug": "industry",
-        "taxonomy": "category",
-        "parent": 0,
-        "meta": [],
-        "_links": {
-            "self": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories/6",
-                    "targetHints": {
-                        "allow": [
-                            "GET"
-                        ]
-                    }
-                }
-            ],
-            "collection": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories"
-                }
-            ],
-            "about": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/taxonomies/category"
-                }
-            ],
-            "wp:post_type": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/posts?categories=6"
-                }
-            ],
-            "curies": [
-                {
-                    "name": "wp",
-                    "href": "https://api.w.org/{rel}",
-                    "templated": true
-                }
-            ]
-        }
-    },
-    {
-        "id": 8,
-        "count": 3211,
-        "description": "",
-        "link": "https://www.shortbites.ai/category/jobs/",
-        "name": "Jobs",
-        "slug": "jobs",
-        "taxonomy": "category",
-        "parent": 0,
-        "meta": [],
-        "_links": {
-            "self": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories/8",
-                    "targetHints": {
-                        "allow": [
-                            "GET"
-                        ]
-                    }
-                }
-            ],
-            "collection": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories"
-                }
-            ],
-            "about": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/taxonomies/category"
-                }
-            ],
-            "wp:post_type": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/posts?categories=8"
-                }
-            ],
-            "curies": [
-                {
-                    "name": "wp",
-                    "href": "https://api.w.org/{rel}",
-                    "templated": true
-                }
-            ]
-        }
-    },
-    {
-        "id": 1,
-        "count": 1840,
-        "description": "Technology News",
-        "link": "https://www.shortbites.ai/category/technology/",
-        "name": "Technology",
-        "slug": "technology",
-        "taxonomy": "category",
-        "parent": 0,
-        "meta": [],
-        "_links": {
-            "self": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories/1",
-                    "targetHints": {
-                        "allow": [
-                            "GET"
-                        ]
-                    }
-                }
-            ],
-            "collection": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories"
-                }
-            ],
-            "about": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/taxonomies/category"
-                }
-            ],
-            "wp:post_type": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/posts?categories=1"
-                }
-            ],
-            "curies": [
-                {
-                    "name": "wp",
-                    "href": "https://api.w.org/{rel}",
-                    "templated": true
-                }
-            ]
-        }
-    },
-    {
-        "id": 14,
-        "count": 1003,
-        "description": "",
-        "link": "https://www.shortbites.ai/category/business/us-market/",
-        "name": "U.S Market",
-        "slug": "us-market",
-        "taxonomy": "category",
-        "parent": 5,
-        "meta": [],
-        "_links": {
-            "self": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories/14",
-                    "targetHints": {
-                        "allow": [
-                            "GET"
-                        ]
-                    }
-                }
-            ],
-            "collection": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories"
-                }
-            ],
-            "about": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/taxonomies/category"
-                }
-            ],
-            "up": [
-                {
-                    "embeddable": true,
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/categories/5"
-                }
-            ],
-            "wp:post_type": [
-                {
-                    "href": "https://www.shortbites.ai/wp-json/wp/v2/posts?categories=14"
-                }
-            ],
-            "curies": [
-                {
-                    "name": "wp",
-                    "href": "https://api.w.org/{rel}",
-                    "templated": true
-                }
-            ]
-        }
-    }
+  {
+    "id": 194,
+    "name": "Technology",
+    "slug": "technology",
+    "children": [
+      { "id": 203, "name": "AI Tools", "slug": "ai-tools" },
+      { "id": 204, "name": "Developer Stuff", "slug": "developer-stuff" },
+      { "id": 202, "name": "Mobile Apps", "slug": "mobile-apps" },
+      { "id": 206, "name": "SaaS & APIs", "slug": "saas-apis" },
+      { "id": 200, "name": "Tech & AI", "slug": "tech-ai" },
+      { "id": 207, "name": "Tech History", "slug": "tech-history" },
+      { "id": 201, "name": "Tools & Apps", "slug": "tools-apps" },
+      { "id": 205, "name": "UX & Design", "slug": "ux-design" }
+    ]
+  },
+  {
+    "id": 195,
+    "name": "Startups & Business",
+    "slug": "startups-business",
+    "children": [
+      { "id": 209, "name": "Business & Strategy", "slug": "business-strategy" },
+      { "id": 210, "name": "Ecommerce & DTC", "slug": "ecommerce-dtc" },
+      { "id": 213, "name": "Economy & Policy", "slug": "economy-policy" },
+      { "id": 212, "name": "Money & Finance", "slug": "money-finance" },
+      { "id": 211, "name": "Side Hustles", "slug": "side-hustles" },
+      { "id": 208, "name": "Startups & Founders", "slug": "startups-founders" }
+    ]
+  },
+  {
+    "id": 196,
+    "name": "Marketing & Growth",
+    "slug": "marketing-growth",
+    "children": [
+      { "id": 214, "name": "Digital Marketing", "slug": "digital-marketing" },
+      { "id": 216, "name": "Marketing & Growth", "slug": "marketing-growth" },
+      { "id": 215, "name": "Social Media Trends", "slug": "social-media-trends" }
+    ]
+  },
+  {
+    "id": 197,
+    "name": "Science & Mind",
+    "slug": "science-mind",
+    "children": [
+      { "id": 220, "name": "AI Ethics & Regulation", "slug": "ai-ethics-regulation" },
+      { "id": 221, "name": "Climate & Energy", "slug": "climate-energy" },
+      { "id": 219, "name": "Health & Biohacking", "slug": "health-biohacking" },
+      { "id": 218, "name": "Psychology & Behavior", "slug": "psychology-behavior" },
+      { "id": 217, "name": "Science & Space", "slug": "science-space" }
+    ]
+  },
+  {
+    "id": 198,
+    "name": "Learning & Productivity",
+    "slug": "learning-productivity",
+    "children": [
+      { "id": 224, "name": "Future of Work", "slug": "future-of-work" },
+      { "id": 223, "name": "Learning & Education", "slug": "learning-education" },
+      { "id": 222, "name": "Productivity Hacks", "slug": "productivity-hacks" }
+    ]
+  },
+  {
+    "id": 199,
+    "name": "Culture & Trends",
+    "slug": "culture-trends",
+    "children": [
+      { "id": 228, "name": "Brain Candy", "slug": "brain-candy" },
+      { "id": 226, "name": "Internet Trends", "slug": "internet-trends" },
+      { "id": 225, "name": "Pop Culture", "slug": "pop-culture" },
+      { "id": 229, "name": "Quick Facts & Trivia", "slug": "quick-facts-trivia" },
+      { "id": 227, "name": "WTF News", "slug": "wtf-news" }
+    ]
+  }
 ]

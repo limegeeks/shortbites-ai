@@ -1,9 +1,9 @@
 
-'use client'
+
 // import { Bell, CircleUser, Menu, MenuIcon, MenuSquareIcon, UserCircle2, X } from "lucide-react"; // Icon library for the menu
 import Image from "next/image";
 import Link from "next/link";
-import React, { Suspense, useEffect } from "react";
+import React from "react";
 import SidebarToggle from "./SidebarToggle";
 import { Button } from "../ui/button";
 import { Bell, ChevronDown, Menu, Search, SearchIcon, User, UserCircle2 } from "lucide-react";
@@ -13,31 +13,36 @@ import { Input } from "../ui/input";
 import { Card, CardDescription, CardTitle } from "../ui/card";
 import ToggleMenuComponent from "./ToggleMenuComponent";
 import AutoSuggestSearch from "./search/AutoSuggestSearch";
-import { useScroll } from "@/providers/ScrollProvider";
+// import { useScroll } from "@/providers/ScrollProvider";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from '@/components/ui/dropdown-menu'
-import { useRouter } from "next/router";
+import  MegaMenu  from "../megamenu/MegaMenu";
  
 export default   function Header(props: any) {
 
-  const { hideHeader, currentPost } = useScroll();
+
+ 
+  // const { hideHeader, currentPost } = useScroll();
   const handleSelect = (value: string) => {
     if (value === "classic") {
-      window.location.href = "https://classic.shortbites.ai"; // Full page navigation
+      // window.location.href = "https://classic.shortbites.ai"; // Full page navigation
     } else {
       // router.push(`/${value}`); // Internal Next.js navigation
     }
   };
-console.log("hide header is", hideHeader);
-console.log("current post is", currentPost);
 
-const {categories} = props;
+
+const {items} = props;
+
+console.log("items in header are", items);
+
+  if (!items || !items.length) return null;
   // const [isOpen, setIsOpen] = useState(false);
 
-console.log("hide header is", hideHeader);
+// console.log("hide header is", hideHeader);
 
   return (
-    <header className={`  header bg-slate-50/80 backdrop-blur-lg absolute   top-0 left-0 w-full shadow-md z-50 transform ${
-        hideHeader ? "-translate-y-full   transition-all duration-500  slide-in-from-bottom " : "translate-y-0    transition-all duration-500  slide-out-to-bottom" }
+    <header className={`  header bg-slate-50/80 backdrop-blur-lg absolute   top-0 left-0 w-full shadow-md z-100 transform 
+    
     `}>
       <div className=" mx-auto flex  items-center justify-evenly p-4">
 
@@ -51,20 +56,18 @@ console.log("hide header is", hideHeader);
      
           <div className="flex-1 flex   justify-center items-center"> 
    
-       
+         <MegaMenu items={items}  />
+    
+   
           </div>
 
-<div className="flex"> 
 
- 
-</div>
 <Dialog >      
 <AutoSuggestSearch />
         {/* Navigation Links (Desktop) */}
         <nav className="  flex flex-row md:flex sm:gap-4   sm:mt-4 sm:ml-16 ">
        
   
-     
         <div className=" hidden sm:block "> 
           <CountrySelect  />
           </div>

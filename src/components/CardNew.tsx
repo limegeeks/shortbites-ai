@@ -16,6 +16,7 @@ import { Separator } from '@radix-ui/react-separator';
 import ShareBox from './ShareBox';
 import { Drawer } from '@/components/ui/drawer';
 import { DrawerTrigger } from './ui/drawer';
+import { decode } from 'he';
 // Dynamically import SafeHTML to fix hydration issues
 const SafeHTML = dynamic(() => import('./safehtml/Html'), { ssr: false });
 export interface Category {
@@ -103,7 +104,7 @@ const NewsCard = ({ title, slug, date, categories, excerpt, content, imageUrl, i
                   className="bg-amber-600 text-white  no-underline
  text-lg font-bold mr-2 px-2 py-1 rounded-full"
                 >
-                  {category.name}
+                  {decode(category.name)}
                 </Link>
               ))}
             </div>

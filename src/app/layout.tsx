@@ -18,6 +18,7 @@ import ClientComponent from "@/components/ClientComponent";
 import { ScrollProvider } from "@/providers/ScrollProvider";
 import { Toaster } from "@/components/ui/sonner";
 import Script from "next/script";
+import { FooterLegalMenu } from "@/components/FooterLegal";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -34,6 +35,13 @@ export const metadata: Metadata = {
   description: "Daily Dose of News as shorts",
 };
 
+export async function getMainMenu() {
+  const res = await fetch("http://localhost:3000/api/menu/");
+  if (!res.ok) throw new Error("Failed to fetch menu");
+  return res.json();
+}
+
+
 // ${geistSans.variable} ${geistMono.variable}
 export default async function RootLayout({
   children,
@@ -44,7 +52,7 @@ export default async function RootLayout({
 
   // const categories = await getCategories();
 
-
+  const menuItems = await getMainMenu()
 
   
   return (
@@ -64,17 +72,19 @@ export default async function RootLayout({
           <SidebarProvider>
    <ClientComponent />
    <ScrollProvider>
-            <Header categories={categories} />
+            <Header items={menuItems ?? []} />
             
+
+            <div className="sm:hidden"> 
                      
-            <AppSidebar categories={categories} />
-   
+            <AppSidebar categories={categories} mobileCheck={undefined} />
+   </div>
       
             {children}
             <Toaster />
             </ScrollProvider>
           </SidebarProvider>
-     
+          <FooterLegalMenu />
         </QueryProvider>
       </body>
     </html>
