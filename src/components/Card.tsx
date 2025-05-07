@@ -34,7 +34,6 @@ export interface NewsCardProps {
 }
 const  NewsCard = React.memo( ({  title , slug, date, categories, tags,  excerpt, content, imageUrl , index} : NewsCardProps) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
-console.log("image url is", imageUrl);
    
 
   const router = useRouter()

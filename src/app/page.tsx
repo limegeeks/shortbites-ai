@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Latest News - ShortBites.ai",
     description: "Get the latest news in a short-form format.",
-    url: "https://shortbites.ai",
+    url: "https://classic.shortbites.ai",
     siteName: "ShortBites.ai",
     type: "website",
   },
@@ -25,8 +25,7 @@ export default async function Home() {
 
   return (
 <> 
-      <main className="dark:bg-slate-900 dark:text-white w-full   overflow-y-auto snap-y snap-mandatory h-screen snap-always font-[family-name:var(--font-geist-sans)]
-      ">
+  
     
 
 
@@ -36,7 +35,7 @@ export default async function Home() {
     
 
 
-      </main>
+     
       </>
   
   );

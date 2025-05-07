@@ -3,25 +3,47 @@
 // import { Bell, CircleUser, Menu, MenuIcon, MenuSquareIcon, UserCircle2, X } from "lucide-react"; // Icon library for the menu
 import Image from "next/image";
 import Link from "next/link";
-import React, { Suspense } from "react";
+import React from "react";
 import SidebarToggle from "./SidebarToggle";
 import { Button } from "../ui/button";
-import { Bell, Menu, Search, SearchIcon, User, UserCircle2 } from "lucide-react";
+import { Bell, ChevronDown, Menu, Search, SearchIcon, User, UserCircle2 } from "lucide-react";
 import { CountrySelect } from "./CountrySelect";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Input } from "../ui/input";
 import { Card, CardDescription, CardTitle } from "../ui/card";
 import ToggleMenuComponent from "./ToggleMenuComponent";
+import AutoSuggestSearch from "./search/AutoSuggestSearch";
+// import { useScroll } from "@/providers/ScrollProvider";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from '@/components/ui/dropdown-menu'
+import  MegaMenu  from "../megamenu/MegaMenu";
  
 export default   function Header(props: any) {
 
-const {categories} = props;
-  // const [isOpen, setIsOpen] = useState(false);
-console.log("categories are", categories);
 
+ 
+  // const { hideHeader, currentPost } = useScroll();
+  const handleSelect = (value: string) => {
+    if (value === "classic") {
+      // window.location.href = "https://classic.shortbites.ai"; // Full page navigation
+    } else {
+      // router.push(`/${value}`); // Internal Next.js navigation
+    }
+  };
+
+
+const {items} = props;
+
+console.log("items in header are", items);
+
+  if (!items || !items.length) return null;
+  // const [isOpen, setIsOpen] = useState(false);
+
+// console.log("hide header is", hideHeader);
 
   return (
-    <header className="  bg-slate-50/80 backdrop-blur-lg absolute   top-0 left-0 w-full shadow-md z-50">
+    <header className={`  header bg-slate-50/80 backdrop-blur-lg absolute   top-0 left-0 w-full shadow-md z-100 transform 
+    
+    `}>
       <div className=" mx-auto flex  items-center justify-evenly p-4">
 
       
@@ -34,23 +56,33 @@ console.log("categories are", categories);
      
           <div className="flex-1 flex   justify-center items-center"> 
    
-       
+         <MegaMenu items={items}  />
+    
+   
           </div>
 
-<div className="flex"> 
 
- 
-</div>
-<Dialog>      
+<Dialog >      
+<AutoSuggestSearch />
         {/* Navigation Links (Desktop) */}
         <nav className="  flex flex-row md:flex sm:gap-4   sm:mt-4 sm:ml-16 ">
        
   
-     
         <div className=" hidden sm:block "> 
           <CountrySelect  />
           </div>
+          <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" className="flex items-center gap-2">
+         Select Style  <ChevronDown size={16} />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+      <DropdownMenuItem disabled onClick={() => handleSelect("modern")}>Shorts</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleSelect("classic")}>Classic</DropdownMenuItem>
        
+      </DropdownMenuContent>
+    </DropdownMenu>
           <DialogTrigger  className="hover:bg-slate-100 hover:rounded-full hover:border-1 h-8 w-8 flex justify-center mt-0.5 "> 
           
        
@@ -68,34 +100,7 @@ console.log("categories are", categories);
           <ToggleMenuComponent />
        
         </nav>
-        <DialogContent className=" absolute  border-0 left-1/2 transform  mx-auto  md:max-w-1/2 z-50 p-4  shadow-lg rounded-lg">
-    <DialogHeader>
-      <DialogTitle>Search What you are looking for </DialogTitle>
-      <DialogDescription>
-       
-
-      <Input  placeholder="Search" className="placholder:text-4xl  focus:text-black  p-4 w-full  rounded-md border h-12 focus:outline-none text-4xl my-4   bg-white/30 focus:bg-white"  />
-    
-    <div className="overflow-auto h-[calc(100vh-300px)]"> 
-    {[...new Array(10)].map(function(item, index) {
-
-      return ( <Link key={index} href={"#"} >
-<div  className="p-4 rounded-none m-2  bg-white dark:bg-slate-900  dark:text-slate-50  opacity-95 hover:opacity-100 cursor-pointer">
-<CardTitle className="text-2xl font-bold  first-letter:text-amber-600" > 
-          Card Title 
-</CardTitle>
-      <CardDescription>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi voluptas, distinctio praesentium a numquam odit unde. Pariatur distinctio aspernatur suscipit, repellendus voluptatem unde blanditiis, facere, saepe consequuntur minus assumenda architecto.
-      </CardDescription>
-      </div>
-      </Link>)
-    })}
-         </div>
-    
-      </DialogDescription>
-    </DialogHeader>
-  </DialogContent>
-
+         
         </Dialog>
 
       </div>

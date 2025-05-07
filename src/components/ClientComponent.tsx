@@ -12,7 +12,6 @@ export default function ClientComponent() {
     const pathname = usePathname(); // Get current page route
 
 
-console.log("path name is", pathname);
 
       // Close sidebar when the route changes
   useEffect(() => {
