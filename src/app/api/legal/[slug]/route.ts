@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 
-const WP_BASE_URL = "https://classic.shortbites.ai"  // Replace with your WP site URL
+const WP_BASE_URL = "https://www.shortbites.ai"  // Replace with your WP site URL
 
 export async function GET(req: Request, { params }: { params: { slug: string } }) {
   const { slug } = params
@@ -13,7 +13,7 @@ export async function GET(req: Request, { params }: { params: { slug: string } }
     const wpRes = await fetch(`${WP_BASE_URL}/wp-json/wp/v2/pages?slug=${slug}`)
     const data = await wpRes.json()
 
-    if (data.length === 0) {
+    if (!Array.isArray(data) || data.length === 0) {
       return NextResponse.json({ error: "Page not found" }, { status: 404 })
     }
 

@@ -69,21 +69,21 @@ export default async function RootLayout({
 
         <QueryProvider>
 
-          <SidebarProvider>
-   <ClientComponent />
+       
+   {/* <ClientComponent /> */}
    <ScrollProvider>
             <Header items={menuItems ?? []} />
             
 
             <div className="sm:hidden"> 
                      
-            <AppSidebar categories={categories} mobileCheck={undefined} />
+            {/* <AppSidebar categories={categories} mobileCheck={undefined} /> */}
    </div>
       
             {children}
             <Toaster />
             </ScrollProvider>
-          </SidebarProvider>
+        
           <FooterLegalMenu />
         </QueryProvider>
       </body>

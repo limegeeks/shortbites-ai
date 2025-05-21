@@ -99,7 +99,7 @@ console.log("menu items in megamenu are", items);
 
                 return (
                     <NavigationMenuItem className="lg:relative hidden  lg:block group" key={item.id}>
-                    <Link href={item.url} legacyBehavior passHref>
+                    <Link as={"a"} href={item.url} legacyBehavior passHref>
                         <NavigationMenuTrigger className={navigationMenuTriggerStyle()}>
                         { decode( item.title.rendered )}
                         </NavigationMenuTrigger>
@@ -124,7 +124,7 @@ console.log("menu items in megamenu are", items);
                     return (
         <NavigationMenuItem key={item.id}>
           <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink  className={navigationMenuTriggerStyle()}>
              {decode(item.title.rendered)}
             </NavigationMenuLink>
           </Link>

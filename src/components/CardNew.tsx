@@ -172,7 +172,7 @@ const NewsCard = ({ title, slug, date, categories, excerpt, content, imageUrl, i
         <ActionButton onClick={() => {}} icon={<Bookmark size={24} />} />
       </div>
 
-          <ShareBox url={'https://shortbites.ai/'+slug} />
+          <ShareBox url={'https://www.shortbites.ai/'+slug} />
       </Drawer>
 
     </Card>

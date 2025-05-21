@@ -1,6 +1,6 @@
 // app/api/categories/route.ts (Next.js API Route)
 import { NextResponse } from "next/server";
-const WP_API_URL = 'https://classic.shortbites.ai';
+const WP_API_URL = 'https://www.shortbites.ai';
 
 export async function GET(req: Request) {
   try {

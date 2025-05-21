@@ -1,42 +1,73 @@
-import Image from "next/image";
-import React, { Suspense } from "react";
-import { getInitialPosts } from "@/services/posts";
-import { Metadata } from "next";
-import InfinitePosts from "@/components/infiniteposts/InfinitePosts";
-import SkeletonCard from "@/components/SkeletonCard";
-export const metadata: Metadata = {
-  title: "Latest News - ShortBites.ai",
-  description: "Stay updated with the latest news in short-form content on ShortBites.ai.",
-  openGraph: {
-    title: "Latest News - ShortBites.ai",
-    description: "Get the latest news in a short-form format.",
-    url: "https://classic.shortbites.ai",
-    siteName: "ShortBites.ai",
-    type: "website",
-  },
-};
+// app/home/page.tsx
 
+import { fetchHomePosts } from "@/lib/FetchHomePosts"
+import { Card, CardHeader, CardDescription as CardBody, CardFooter } from "@/components/ui/card"
 
-export default async function Home() {
+import { Button } from "@/components/ui/button"
+import  Image  from "next/image"
+import  Head  from "next/head"
+import { stringify } from "querystring"
 
-  const initialPosts = await getInitialPosts();
+export const dynamic = "force-static" // Forces static rendering for better SEO
+
+export default async function HomePage() {
+  const posts = await fetchHomePosts()
+console.log("posts are", posts);
 
 
 
+  // Ensure posts are available before attempting to group them
+  if (!posts || posts.length === 0) {
+    return (
+      <section className="container mx-auto py-16">
+        <h1 className="text-4xl font-bold text-center mb-8">Latest Trends and Insights</h1>
+        <p className="text-center text-gray-600">No posts available at the moment. Please check back later.</p>
+      </section>
+    )
+  }
+
+  console.log("posts in homepage are are", posts);
+  
+  // Group posts by category
+
+
+  
   return (
-<> 
-  
+
     
+    <>
+      <Head>
+        <title>ShortBites - Latest Trends and Insights</title>
+        <meta
+          name="description"
+          content="Discover the latest trends and insights on tech, business, culture, and more. Stay up-to-date with ShortBites!"
+        />
+        <meta property="og:title" content="ShortBites - Latest Trends and Insights" />
+        <meta
+          property="og:description"
+          content="Discover the latest trends and insights on tech, business, culture, and more. Stay up-to-date with ShortBites!"
+        />
+        <meta property="og:image" content="https://www.shortbites.ai/og-image.jpg" />
+        <meta property="og:url" content="https://www.shortbites.ai" />
+        <meta name="twitter:title" content="ShortBites - Latest Trends and Insights" />
+        <meta
+          name="twitter:description"
+          content="Discover the latest trends and insights on tech, business, culture, and more. Stay up-to-date with ShortBites!"
+        />
+        <meta name="twitter:image" content="https://www.shortbites.ai/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://www.shortbites.ai" />
+      </Head>
 
-
-        <Suspense fallback={<div className=" h-screen w-screen  "> <SkeletonCard /></div>}>
-       <InfinitePosts type={"latest"} initialPosts={initialPosts} />
-       </Suspense>
-    
-
-
-     
-      </>
-  
-  );
+      <section className="container grid grid-c mx-auto py-16">
+       
+        {posts && Object.keys(posts).map((category) => {
+          
+          console.log("category is", JSON.stringify(category));
+         return  ( <div key={category}><pre>{JSON.stringify(category )}</pre> </div>)
+          
+          })}
+      </section>
+    </>
+  )
 }

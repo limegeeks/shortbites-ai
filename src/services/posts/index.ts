@@ -1,4 +1,4 @@
-const url = "https://shortbites.ai/api/posts/";
+const url = "https://www.shortbites.ai/api/posts/";
 
 export async function getInitialPosts( page = 1, limit = 3, category = "" ) {
     try {
@@ -47,7 +47,7 @@ export async function getInitialPosts( page = 1, limit = 3, category = "" ) {
        console.log("url is", url);
         
    
-      url = `https://shortbites.ai/api/posts/${postSlug}/related?page=${pageParam}&per_page=${3}&embed`;
+      url = `https://www.shortbites.ai/api/posts/${postSlug}/related?page=${pageParam}&per_page=${3}&embed`;
     }
   console.log("url in get posts is",url);
   
