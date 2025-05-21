@@ -4,7 +4,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import SidebarToggle from "./SidebarToggle";
 import { Button } from "../ui/button";
 import { Bell, ChevronDown, Menu, Search, SearchIcon, User, UserCircle2 } from "lucide-react";
 import { CountrySelect } from "./CountrySelect";
@@ -24,7 +23,7 @@ export default   function Header(props: any) {
   // const { hideHeader, currentPost } = useScroll();
   const handleSelect = (value: string) => {
     if (value === "classic") {
-      // window.location.href = "https://classic.shortbites.ai"; // Full page navigation
+      // window.location.href = "https://www.shortbites.ai"; // Full page navigation
     } else {
       // router.push(`/${value}`); // Internal Next.js navigation
     }
@@ -41,10 +40,13 @@ console.log("items in header are", items);
 // console.log("hide header is", hideHeader);
 
   return (
+          <Dialog >   
     <header className={`  header bg-slate-50/80 backdrop-blur-lg absolute   top-0 left-0 w-full shadow-md z-100 transform 
     
     `}>
-      <div className=" mx-auto flex  items-center justify-evenly p-4">
+
+
+      <div className=" mx-auto flex relative items-center justify-center py-6 px-4">
 
       
         {/* Logo / Brand Name */}
@@ -54,56 +56,38 @@ console.log("items in header are", items);
          <Link href="/" >   <Image className="" src="/logo.png" alt="Logo" objectFit={"cover"} width={250} height={80} /> </Link>
         </div>
      
+
+     <div className="flex-col gap-y-2"> 
+
+     
+        {/* Navigation Links (Desktop) */}
+       
+
           <div className="flex-1 flex   justify-center items-center"> 
    
          <MegaMenu items={items}  />
-    
-   
-          </div>
-
-
-<Dialog >      
-<AutoSuggestSearch />
-        {/* Navigation Links (Desktop) */}
-        <nav className="  flex flex-row md:flex sm:gap-4   sm:mt-4 sm:ml-16 ">
-       
-  
-        <div className=" hidden sm:block "> 
-          <CountrySelect  />
-          </div>
-          <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="flex items-center gap-2">
-         Select Style  <ChevronDown size={16} />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-      <DropdownMenuItem disabled onClick={() => handleSelect("modern")}>Shorts</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleSelect("classic")}>Classic</DropdownMenuItem>
-       
-      </DropdownMenuContent>
-    </DropdownMenu>
+        
+          <div className="flex-1 min-w-16"> 
           <DialogTrigger  className="hover:bg-slate-100 hover:rounded-full hover:border-1 h-8 w-8 flex justify-center mt-0.5 "> 
           
        
           <Search size={18} className="border-0  h-8 " />
            
           </DialogTrigger>       
-
-        {/* <Button className="rounded-full  "  variant={"ghost"}>
-          <Bell fontSize={32} size={48} />
-          </Button>  
-        <Button  className="rounded-full text-2xl   "  variant={"ghost"}>
-          <User fontSize={32} size={48} />
-          </Button>   */}
+          </div>
       
-          <ToggleMenuComponent />
-       
-        </nav>
-         
-        </Dialog>
+        
+          </div>
+
+
+
+</div>
+
+
 
       </div>
     </header>
+      <AutoSuggestSearch />
+            </Dialog>
   );
 }

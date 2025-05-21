@@ -5,12 +5,12 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   try {
     // Replace with your actual WordPress site URL
-    const wordpressUrl = 'https://classic.shortbites.ai/wp-json/wp/v2/menu-items';
+    const wordpressUrl = 'https://www.shortbites.ai/wp-json/wp/v2/menu-items';
     const menuSlug = 'your-menu-slug'; // Replace with the slug of your menu
 
     // Replace these with your WordPress username and Application Password
     const username = 'sb_publisher1';
-    const applicationPassword = 'LBWO JEWf jEWb RF3L ZYG0 nfBr';
+    const applicationPassword = 'vmDe xRy7 M9dS HIXc Unyz fWmX';
 
     // Encode the username and application password in base64
     const authHeader = 'Basic ' + Buffer.from(`${username}:${applicationPassword}`).toString('base64');
@@ -24,7 +24,9 @@ export async function GET() {
 
     // Handle response
     if (!response.ok) {
-      throw new Error('Failed to fetch menu data');
+      console.log("Response not OK:", response.status, response.statusText);
+      
+      throw new Error(response.status + ' ' + response.statusText); 
     }
 
     const data = await response.json();
