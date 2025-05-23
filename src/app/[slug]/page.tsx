@@ -50,7 +50,7 @@ export default async function Page(props:any) {
 
 
   console.log("slug is", slug);
-  const url = `http://localhost:3000/api/posts/${slug}`
+  const url = `https://app.shortbites.ai/api/posts/${slug}`
   
   console.log("url is", url);
   
