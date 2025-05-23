@@ -32,7 +32,7 @@ export default   function Header(props: any) {
 
 const {items} = props;
 
-console.log("items in header are", items);
+// console.log("items in header are", items);
 
   if (!items || !items.length) return null;
   // const [isOpen, setIsOpen] = useState(false);

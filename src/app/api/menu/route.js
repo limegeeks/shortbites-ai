@@ -3,10 +3,11 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
+  console.log("in /api/menu");
+  
   try {
     // Replace with your actual WordPress site URL
     const wordpressUrl = 'https://www.shortbites.ai/wp-json/wp/v2/menu-items';
-    const menuSlug = 'your-menu-slug'; // Replace with the slug of your menu
 
     // Replace these with your WordPress username and Application Password
     const username = 'sb_publisher1';
@@ -15,8 +16,11 @@ export async function GET() {
     // Encode the username and application password in base64
     const authHeader = 'Basic ' + Buffer.from(`${username}:${applicationPassword}`).toString('base64');
 
+    const finalUrl = `${wordpressUrl}?context=view&menus=288`;
+    console.log("finalUrl is", finalUrl);
+    
     // Fetch the menu data from WordPress
-    const response = await fetch(`${wordpressUrl}?context=view&menus=288`, {
+    const response = await fetch(finalUrl, {
       headers: {
         'Authorization': authHeader,
       },
@@ -30,6 +34,10 @@ export async function GET() {
     }
 
     const data = await response.json();
+
+    console.log("data is", data);
+    
+    // Check if the data is validl
 
     if (!data || !Array.isArray(data)) {
       return NextResponse.json({ message: 'Menu data not found.' }, { status: 404 });

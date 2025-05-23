@@ -49,7 +49,9 @@ export default async function RootLayout({
 
   // const categories = await getCategories();
 
-  const menuItems = await getMainMenu()
+  const menuItems : any[] =  [] // await getMainMenu();
+
+
 
   
   return (
