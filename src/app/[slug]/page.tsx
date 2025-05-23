@@ -37,7 +37,14 @@ async function getPost(slug: string) {
 //     };
 //   }
   
-
+// Optional: Used for static route mapping if you want pre-generated routes
+export async function generateStaticParams() {
+  return [
+    { slug: "privacy-policy" },
+    { slug: "terms-and-conditions" },
+    { slug: "about" },
+  ];
+}
 export default async function Page(props:any) {
   const slug =  (await props?.params)?.slug;
 

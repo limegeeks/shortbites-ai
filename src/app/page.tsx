@@ -1,73 +1,73 @@
-// app/home/page.tsx
+import { fetchHomePosts } from "@/lib/FetchHomePosts";
 
-import { fetchHomePosts } from "@/lib/FetchHomePosts"
-import { Card, CardHeader, CardDescription as CardBody, CardFooter } from "@/components/ui/card"
+// Static metadata for SEO
+export const metadata = {
+  title: "ShortBites - Latest Trends and Insights",
+  description:
+    "Discover the latest trends and insights on tech, business, culture, and more. Stay up-to-date with ShortBites!",
+  openGraph: {
+    title: "ShortBites - Latest Trends and Insights",
+    description:
+      "Discover the latest trends and insights on tech, business, culture, and more. Stay up-to-date with ShortBites!",
+    url: "https://www.shortbites.ai",
+    images: [
+      {
+        url: "https://www.shortbites.ai/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "ShortBites Open Graph Image",
+      },
+    ],
+    siteName: "ShortBites",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ShortBites - Latest Trends and Insights",
+    description:
+      "Discover the latest trends and insights on tech, business, culture, and more. Stay up-to-date with ShortBites!",
+    images: ["https://www.shortbites.ai/og-image.jpg"],
+    creator: "@shortbites_ai", // Update with your actual handle
+  },
+  alternates: {
+    canonical: "https://www.shortbites.ai",
+  },
+};
 
-import { Button } from "@/components/ui/button"
-import  Image  from "next/image"
-import  Head  from "next/head"
-import { stringify } from "querystring"
-
-export const dynamic = "force-static" // Forces static rendering for better SEO
-
+export const dynamic = "force-dynamic";
 export default async function HomePage() {
-  const posts = await fetchHomePosts()
-console.log("posts are", posts);
+  // const posts = await fetchHomePosts();
 
+  // if (!posts || posts.length === 0) {
+  //   return (
+  //     <section className="container mx-auto py-16">
+  //       <h1 className="text-4xl font-bold text-center mb-8">
+  //         Latest Trends and Insights
+  //       </h1>
+  //       <p className="text-center text-gray-600">
+  //         No posts available at the moment. Please check back later.
+  //       </p>
+  //     </section>
+  //   );
+  // }
 
+  // return (
+  //   <section className="container grid grid-cols-1 gap-4 mx-auto py-16">
+  //     {/* Add post rendering logic here */}
+  //     <div className="text-center text-gray-600">
+  //       Posts are ready. Display coming soon.
+  //     </div>
+  //   </section>
+  // );
 
-  // Ensure posts are available before attempting to group them
-  if (!posts || posts.length === 0) {
-    return (
-      <section className="container mx-auto py-16">
-        <h1 className="text-4xl font-bold text-center mb-8">Latest Trends and Insights</h1>
-        <p className="text-center text-gray-600">No posts available at the moment. Please check back later.</p>
-      </section>
-    )
-  }
-
-  console.log("posts in homepage are are", posts);
-  
-  // Group posts by category
-
-
-  
   return (
-
-    
-    <>
-      <Head>
-        <title>ShortBites - Latest Trends and Insights</title>
-        <meta
-          name="description"
-          content="Discover the latest trends and insights on tech, business, culture, and more. Stay up-to-date with ShortBites!"
-        />
-        <meta property="og:title" content="ShortBites - Latest Trends and Insights" />
-        <meta
-          property="og:description"
-          content="Discover the latest trends and insights on tech, business, culture, and more. Stay up-to-date with ShortBites!"
-        />
-        <meta property="og:image" content="https://www.shortbites.ai/og-image.jpg" />
-        <meta property="og:url" content="https://www.shortbites.ai" />
-        <meta name="twitter:title" content="ShortBites - Latest Trends and Insights" />
-        <meta
-          name="twitter:description"
-          content="Discover the latest trends and insights on tech, business, culture, and more. Stay up-to-date with ShortBites!"
-        />
-        <meta name="twitter:image" content="https://www.shortbites.ai/og-image.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://www.shortbites.ai" />
-      </Head>
-
-      <section className="container grid grid-c mx-auto py-16">
-       
-        {posts && Object.keys(posts).map((category) => {
-          
-          console.log("category is", JSON.stringify(category));
-         return  ( <div key={category}><pre>{JSON.stringify(category )}</pre> </div>)
-          
-          })}
-      </section>
-    </>
+    <div> 
+      <h1 className="text-4xl font-bold text-center mb-8">
+        Latest Trends and Insights
+      </h1>
+      <p className="text-center text-gray-600">
+        No posts available at the moment. Please check back later.
+      </p>
+    </div>
   )
 }
