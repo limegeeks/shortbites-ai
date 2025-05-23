@@ -19,6 +19,7 @@ import { ScrollProvider } from "@/providers/ScrollProvider";
 import { Toaster } from "@/components/ui/sonner";
 import Script from "next/script";
 import { FooterLegalMenu } from "@/components/FooterLegal";
+import { getMainMenu } from "@/services/menu";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -35,12 +36,8 @@ export const metadata: Metadata = {
   description: "Daily Dose of News as shorts",
 };
 
-export async function getMainMenu() {
-  const res = await fetch("http://localhost:3000/api/menu/");
-  if (!res.ok) throw new Error("Failed to fetch menu");
-  return res.json();
-}
 
+export const dynamic = "force-dynamic";
 
 // ${geistSans.variable} ${geistMono.variable}
 export default async function RootLayout({
